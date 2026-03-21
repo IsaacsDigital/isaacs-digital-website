@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refund Policy | Isaac's Digital Services</title>
+  <meta name="description" content="Refund Policy for Isaac's Digital Services. Learn about our policy on refunds, revisions, and client satisfaction." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .legal-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+    .legal-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 12px; }
+    .legal-hero .last-updated {
+      display: inline-block;
+      background: rgba(79,110,247,0.1);
+      border: 1px solid rgba(79,110,247,0.25);
+      color: var(--accent);
+      border-radius: 100px;
+      padding: 5px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .legal-hero p { color: var(--muted); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+
+    .legal-body { padding: 0 0 80px; }
+    .legal-cards {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .legal-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+    }
+    .legal-card h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .legal-card p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .legal-card p + p { margin-top: 12px; }
+    .legal-card a { color: var(--accent); text-decoration: none; }
+    .legal-card a:hover { text-decoration: underline; }
+
+    .legal-back {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .legal-back a {
+      color: var(--muted);
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .legal-back a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="site-logo">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+        <span class="logo-text">Isaac's Digital</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta">Book Free Call</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">&#x2715;</button>
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="services.html" onclick="closeMobile()">Services</a>
+    <a href="how-it-works.html" onclick="closeMobile()">How It Works</a>
+    <a href="about.html" onclick="closeMobile()">About</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+    <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta" onclick="closeMobile()">Book Free Call</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="legal-hero">
+    <div class="container">
+      <div class="last-updated">Last updated: January 20, 2026</div>
+      <h1>Refund Policy</h1>
+      <p>Due to the custom nature of our services, please review our policy on refunds and revisions before engaging with us.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="legal-body">
+    <div class="container">
+      <div class="legal-cards">
+
+        <div class="legal-card">
+          <h2>Refunds</h2>
+          <p>Due to the custom and digital nature of our services and products, all sales are final. Once a project has commenced, a service has been rendered, or a digital product has been delivered or downloaded, no refunds will be issued.</p>
+        </div>
+
+        <div class="legal-card">
+          <h2>Satisfaction &amp; Revisions</h2>
+          <p>Client satisfaction is important to us. Revisions may be available as outlined in your service agreement. Please contact us promptly if deliverables do not meet agreed specifications.</p>
+        </div>
+
+        <div class="legal-card">
+          <h2>Questions</h2>
+          <p>If you have any questions about this policy, please contact us at <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>. We aim to respond within 1&ndash;2 business days.</p>
+        </div>
+
+      </div>
+
+      <div class="legal-back">
+        <a href="index.html">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="site-logo">
+            <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+            <span class="logo-text">Isaac's Digital</span>
+          </a>
+          <p class="footer-tagline">Helping local businesses stop the guesswork and start growing online.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <div class="footer-col-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-col-links">
+            <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>
+            <a href="https://isaacsdigital.com" style="color:var(--muted);">isaacsdigital.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2025 Isaac's Digital Services. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

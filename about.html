@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Isaac's Digital Services</title>
+  <meta name="description" content="Learn about Isaac, why he started Isaac's Digital Services, what drives him, and why local business owners trust him as their digital growth partner." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .story-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: start; }
+    .profile-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; position: sticky; top: 100px;
+    }
+    .profile-photo-wrap {
+      width: 100%; overflow: hidden; line-height: 0;
+    }
+    .profile-photo-wrap img {
+      width: 100%; height: 280px; object-fit: cover; object-position: top; display: block;
+    }
+    .profile-name-block {
+      padding: 24px 32px 4px; text-align: center; border-bottom: 1px solid var(--border);
+    }
+    .profile-name { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; }
+    .profile-title { font-size: 0.875rem; color: var(--muted); padding-bottom: 20px; }
+    .profile-body { padding: 24px 32px; display: flex; flex-direction: column; gap: 20px; }
+    .profile-cta { margin-top: 8px; }
+    .profile-stat { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .profile-stat:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .profile-stat-label { font-size: 0.82rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .profile-stat-value { font-size: 0.875rem; font-weight: 700; text-align: right; }
+    .story-content { display: flex; flex-direction: column; gap: 40px; }
+    .story-section h2 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .story-section p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+    .story-section p:last-child { margin-bottom: 0; }
+    .story-section p strong { color: var(--text); font-weight: 600; }
+    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 12px; }
+    .value-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 24px;
+    }
+    .value-card h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .value-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+    .who-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 24px; text-align: center;
+    }
+    .who-card-icon { margin: 0 auto 12px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .who-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+    .who-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: 1fr; }
+      .profile-card { position: static; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="site-logo">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+        <span class="logo-text">Isaac's Digital</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="about.html" class="active">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta">Book Free Call</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">&#x2715;</button>
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="services.html" onclick="closeMobile()">Services</a>
+    <a href="how-it-works.html" onclick="closeMobile()">How It Works</a>
+    <a href="about.html" class="active" onclick="closeMobile()">About</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+    <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta" onclick="closeMobile()">Book Free Call</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="label fade-in">About</div>
+      <h1 class="fade-in"><span class="highlight">Your Growth Partner,</span><br/>Not Just a Vendor</h1>
+      <p class="fade-in">I'm Isaac. I help local business owners stop the guesswork and start growing online, with real strategy, real execution, and real results.</p>
+    </div>
+  </section>
+
+  <!-- STORY + PROFILE -->
+  <section class="section">
+    <div class="container">
+      <div class="story-grid">
+        <div class="profile-card fade-in">
+          <div class="profile-photo-wrap">
+            <img src="about-photo.jpg.jpg" style="width:100%;height:280px;object-fit:cover;object-position:top;" alt="Isaac" />
+          </div>
+          <div class="profile-name-block">
+            <div class="profile-name">Isaac</div>
+            <div class="profile-title">Founder &amp; Digital Strategist</div>
+          </div>
+          <div class="profile-body">
+            <div class="profile-stat">
+              <span class="profile-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8888a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                Specialization
+              </span>
+              <span class="profile-stat-value">Local Business Growth</span>
+            </div>
+            <div class="profile-stat">
+              <span class="profile-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8888a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                Services
+              </span>
+              <span class="profile-stat-value">Websites &amp; Paid Ads</span>
+            </div>
+            <div class="profile-stat">
+              <span class="profile-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8888a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.1 2.38 2 2 0 012.07.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                Free Call
+              </span>
+              <span class="profile-stat-value">15 min, no commitment</span>
+            </div>
+            <div class="profile-stat">
+              <span class="profile-stat-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8888a0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="12" height="8" rx="2"/><path d="M6 14l-4 4V8l4 4"/><path d="M18 14l4 4V8l-4 4"/></svg>
+                Email
+              </span>
+              <span class="profile-stat-value" style="font-size:0.78rem;"><a href="mailto:isaac@isaacsdigital.com" style="color:var(--accent);">isaac@isaacsdigital.com</a></span>
+            </div>
+            <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary btn-full profile-cta">Book a Free Call</a>
+          </div>
+        </div>
+
+        <div class="story-content">
+          <div class="story-section fade-in">
+            <h2>Why I Started This Business</h2>
+            <p>I saw a problem that frustrated me: <strong>talented, hardworking local business owners losing customers to competitors</strong> who simply showed up better online. Not because those competitors had better services or worked harder. Just because they had a better website and ran smarter ads.</p>
+            <p>That gap bothered me. Here were skilled tradespeople, dedicated shop owners, and passionate entrepreneurs putting everything into their work, yet struggling to grow because digital marketing felt like a foreign language. They'd been burned by expensive agencies that treated them like a number, or tried to DIY it and wasted money with nothing to show for it.</p>
+            <p>So I started Isaac's Digital Services with one goal: <strong>be the person I wish these business owners had access to</strong>. Someone who builds real relationships, gives honest advice, delivers what they promise, and genuinely cares about the outcome.</p>
+          </div>
+
+          <div class="story-section fade-in">
+            <h2>What I Actually Do</h2>
+            <p>I build <strong>high-converting websites</strong> that turn visitors into leads, and I run <strong>targeted ad campaigns</strong> on Google and Facebook that put your business in front of local customers who are actively looking for what you offer.</p>
+            <p>But more than that, I act as a <strong>growth partner</strong>. I pay attention to your business, I think about what will actually move the needle for you specifically, and I communicate clearly so you're never left wondering what's going on or whether your investment is paying off.</p>
+            <p>I'm not trying to build a giant agency. I intentionally keep my client roster focused so every business I work with gets real attention, not handed off to a junior employee or an automated system.</p>
+          </div>
+
+          <div class="story-section fade-in">
+            <h2>My Values</h2>
+            <div class="values-grid">
+              <div class="value-card">
+                <h4>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  Honesty First
+                </h4>
+                <p>I'll tell you when something won't work and when you'd be better served by a different approach. I'd rather lose a sale than set someone up to fail.</p>
+              </div>
+              <div class="value-card">
+                <h4>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  Results Over Reports
+                </h4>
+                <p>Metrics only matter if they translate to real business outcomes: more leads, more customers, more revenue. That's the only scorecard I care about.</p>
+              </div>
+              <div class="value-card">
+                <h4>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  Local Focus
+                </h4>
+                <p>I specialize in helping local businesses grow online. I understand the challenges of local markets and I genuinely care about the communities I serve.</p>
+              </div>
+              <div class="value-card">
+                <h4>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  Responsiveness
+                </h4>
+                <p>When you have a question or a concern, you hear back from me fast. You're not waiting days for an answer from an account manager who doesn't know your business.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="story-section fade-in">
+            <h2>Who I Work With</h2>
+            <p>I work best with local business owners who are serious about growing online, willing to invest in the right tools, and want a partner they can trust, not just a vendor they hire and forget about.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO I SERVE -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <div class="section-label">Who I Serve</div>
+        <h2 class="section-title">Built for Local Businesses Like Yours</h2>
+        <p class="section-sub">I work with all kinds of local businesses, from brand-new startups to established operations looking to grow their digital presence.</p>
+      </div>
+      <div class="who-grid">
+        <div class="who-card fade-in">
+          <div class="who-card-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h4>Contractors &amp; Trades</h4>
+          <p>Plumbers, electricians, HVAC, roofers, and more. Get found when local homeowners search for help.</p>
+        </div>
+        <div class="who-card fade-in">
+          <div class="who-card-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2h18l-2 9H5L3 2z"/><path d="M5 11v9a2 2 0 002 2h10a2 2 0 002-2v-9"/><path d="M9 11v8"/><path d="M15 11v8"/></svg>
+          </div>
+          <h4>Restaurants &amp; Food</h4>
+          <p>Drive foot traffic, promote specials, and keep your menu and hours easy to find online.</p>
+        </div>
+        <div class="who-card fade-in">
+          <div class="who-card-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <h4>Health &amp; Wellness</h4>
+          <p>Salons, spas, fitness studios, and healthcare providers looking to attract and retain clients.</p>
+        </div>
+        <div class="who-card fade-in">
+          <div class="who-card-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h4>Retail &amp; Shops</h4>
+          <p>Local storefronts and boutiques that want more walk-ins and an online presence that reflects their brand.</p>
+        </div>
+        <div class="who-card fade-in">
+          <div class="who-card-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h5l2 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h4>Real Estate &amp; Services</h4>
+          <p>Agents, property managers, and professional service providers needing credibility and leads online.</p>
+        </div>
+        <div class="who-card fade-in">
+          <div class="who-card-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <h4>New Businesses</h4>
+          <p>Just getting started and need to establish your online presence from scratch? I've got you covered.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text fade-in">
+          <h2>Let's Work<br/>Together</h2>
+          <p>If you're a local business owner who wants a partner genuinely invested in your growth, let's talk. The first call is free and there's zero obligation.</p>
+        </div>
+        <div class="cta-actions fade-in">
+          <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary">Book a Free Strategy Call</a>
+          <a href="services.html" class="btn-secondary">See My Services &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="site-logo">
+            <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+            <span class="logo-text">Isaac's Digital</span>
+          </a>
+          <p class="footer-tagline">Helping local businesses stop the guesswork and start growing online.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <div class="footer-col-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-col-links">
+            <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>
+            <a href="https://isaacsdigital.com" style="color:var(--muted);">isaacsdigital.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2025 Isaac's Digital Services. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

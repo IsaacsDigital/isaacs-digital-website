@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Isaac's Digital Services</title>
+  <meta name="description" content="High-converting website design and targeted Google &amp; Facebook ad management for local businesses. See exactly what's included in every service." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .service-block {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+    }
+    .service-block.reverse { direction: rtl; }
+    .service-block.reverse > * { direction: ltr; }
+    .service-detail-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .service-detail-header {
+      padding: 32px 36px 28px;
+      border-bottom: 1px solid var(--border);
+      display: flex; gap: 18px; align-items: flex-start;
+    }
+    .service-detail-body { padding: 32px 36px; }
+    .service-detail-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+    .service-detail-desc { color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+    .include-section { margin-bottom: 28px; }
+    .include-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 14px; }
+    .platform-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .pill {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(79,110,247,0.1); border: 1px solid rgba(79,110,247,0.2);
+      color: #a5b4fc; font-size: 0.8rem; font-weight: 600;
+      padding: 6px 14px; border-radius: 100px;
+    }
+    .service-text-side { display: flex; flex-direction: column; gap: 28px; }
+    .service-why { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+    .service-why h4 { font-size: 0.72rem; font-weight: 700; margin-bottom: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+    .service-why p { font-size: 0.92rem; color: var(--muted); line-height: 1.65; }
+    .benefit-list { display: flex; flex-direction: column; gap: 14px; }
+    .benefit-item { display: flex; gap: 14px; align-items: flex-start; }
+    .benefit-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(79,110,247,0.1); border: 1px solid rgba(79,110,247,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .benefit-text h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+    .benefit-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.55; }
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th, .compare-table td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
+    .compare-table th { font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .compare-table td:first-child { color: var(--muted); }
+    .compare-table td .check { color: #4ade80; font-weight: 700; }
+    .compare-table td .cross { color: var(--muted); }
+    .process-mini { display: flex; flex-direction: column; gap: 2px; }
+    .process-mini-step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); }
+    .process-mini-step:last-child { border-bottom: none; }
+    .process-mini-num { width: 28px; height: 28px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .process-mini-text h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+    .process-mini-text p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── Pricing Section ── */
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .pricing-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 40px;
+      display: flex; flex-direction: column; gap: 20px;
+      transition: border-color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+    }
+    .pricing-card:hover { border-color: rgba(79,110,247,0.4); transform: translateY(-2px); }
+    .pricing-card-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); }
+    .pricing-card-title { font-size: 1.2rem; font-weight: 800; }
+    .pricing-amount { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.03em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
+    .pricing-amount-sub { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
+    .pricing-note { font-size: 0.875rem; color: var(--muted); line-height: 1.65; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; }
+    .pricing-note strong { color: var(--text); }
+
+    /* ── Browser Mockup ── */
+    .browser-mockup {
+      background: #1a1a2e; border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+    }
+    .browser-bar {
+      background: #0f0f1a; padding: 10px 16px;
+      display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .browser-dots { display: flex; gap: 6px; }
+    .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .browser-dot.red { background: #ff5f56; }
+    .browser-dot.yellow { background: #ffbd2e; }
+    .browser-dot.green { background: #27c93f; }
+    .browser-url {
+      flex: 1; background: rgba(255,255,255,0.06); border-radius: 6px;
+      padding: 5px 12px; font-size: 0.72rem; color: var(--muted); font-family: monospace;
+    }
+    .browser-content { padding: 20px; }
+    .mock-nav { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
+    .mock-logo { width: 60px; height: 10px; background: linear-gradient(90deg, #4f6ef7, #7c3aed); border-radius: 4px; }
+    .mock-nav-links { display: flex; gap: 8px; margin-left: auto; }
+    .mock-nav-link { width: 32px; height: 8px; background: rgba(255,255,255,0.12); border-radius: 3px; }
+    .mock-nav-btn { width: 48px; height: 22px; background: linear-gradient(135deg, #4f6ef7, #7c3aed); border-radius: 100px; }
+    .mock-hero { background: rgba(79,110,247,0.07); border-radius: 8px; padding: 20px; margin-bottom: 14px; text-align: center; }
+    .mock-hero-h { width: 60%; height: 12px; background: rgba(255,255,255,0.18); border-radius: 4px; margin: 0 auto 8px; }
+    .mock-hero-h.sm { width: 45%; height: 9px; background: rgba(255,255,255,0.1); margin-bottom: 14px; }
+    .mock-hero-btn { display: inline-block; width: 88px; height: 24px; background: linear-gradient(135deg, #4f6ef7, #7c3aed); border-radius: 100px; }
+    .mock-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .mock-card { background: rgba(255,255,255,0.05); border-radius: 6px; padding: 12px; }
+    .mock-card-icon { width: 20px; height: 20px; background: rgba(79,110,247,0.3); border-radius: 5px; margin-bottom: 8px; }
+    .mock-card-line { height: 6px; background: rgba(255,255,255,0.12); border-radius: 3px; margin-bottom: 5px; }
+    .mock-card-line.short { width: 60%; }
+
+    /* ── Dashboard Mockup ── */
+    .dashboard-mockup {
+      background: #1a1a2e; border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; padding: 20px;
+    }
+    .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .dash-title { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .dash-badge { background: rgba(79,110,247,0.15); border: 1px solid rgba(79,110,247,0.3); color: #a5b4fc; font-size: 0.65rem; font-weight: 700; padding: 3px 8px; border-radius: 100px; }
+    .dash-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+    .dash-metric { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+    .dash-metric-val { font-size: 1rem; font-weight: 800; color: #4ade80; margin-bottom: 2px; }
+    .dash-metric-val.blue { color: #a5b4fc; }
+    .dash-metric-val.purple { color: #c4b5fd; }
+    .dash-metric-label { font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .dash-chart { background: rgba(255,255,255,0.03); border-radius: 8px; padding: 14px; }
+    .dash-chart-label { font-size: 0.65rem; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .dash-bars { display: flex; align-items: flex-end; gap: 6px; height: 48px; }
+    .dash-bar { flex: 1; border-radius: 3px 3px 0 0; }
+    .dash-platforms { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+    .dash-platform-pill { background: rgba(79,110,247,0.12); border: 1px solid rgba(79,110,247,0.25); color: #a5b4fc; font-size: 0.65rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; letter-spacing: 0.04em; }
+
+    @media (max-width: 900px) {
+      .service-block { grid-template-columns: 1fr; gap: 32px; }
+      .service-block.reverse { direction: ltr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    .service-sub { margin-top: 14px; }
+    .service-visual-col { display: flex; flex-direction: column; gap: 24px; }
+    .btn-inline { align-self: flex-start; }
+    .ad-spend-note { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px; margin-top: 24px; }
+    .ad-spend-text { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin-top: 6px; }
+    .include-section-mt { margin-top: 28px; }
+    .process-mini-section { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 24px; }
+    .process-mini-title { margin-bottom: 18px; }
+    .pricing-list { margin-top: 4px; }
+    .compare-card { overflow: auto; }
+    .faq-centered { max-width: 760px; margin: 0 auto; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="site-logo">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+        <span class="logo-text">Isaac's Digital</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta">Book Free Call</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">&#x2715;</button>
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="services.html" class="active" onclick="closeMobile()">Services</a>
+    <a href="how-it-works.html" onclick="closeMobile()">How It Works</a>
+    <a href="about.html" onclick="closeMobile()">About</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+    <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta" onclick="closeMobile()">Book Free Call</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="label fade-in">Services</div>
+      <h1 class="fade-in">Two Services. One Complete<br/><span class="highlight">Online Presence.</span></h1>
+      <p class="fade-in">Everything a local business needs to attract customers and convert them — built and managed entirely by me.</p>
+      <div class="hero-actions fade-in">
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary">Book a Free Strategy Call</a>
+        <a href="how-it-works.html" class="btn-secondary">See How It Works &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE 1: WEBSITES -->
+  <section class="section">
+    <div class="container">
+      <div class="service-block">
+        <div class="service-text-side fade-in">
+          <div>
+            <div class="section-label">Service 01</div>
+            <h2 class="section-title">High-Converting Website Design</h2>
+            <p class="section-sub service-sub">
+              Your website is your #1 sales tool, and most local business websites are losing customers every day. I design fast, mobile-friendly sites built specifically to turn visitors into real leads, calls, and bookings.
+            </p>
+          </div>
+          <div class="service-why">
+            <h4>Why this matters</h4>
+            <p>Over 60% of local searches happen on mobile. If your site is slow, outdated, or confusing on a phone, potential customers leave in seconds and call your competitor instead. Every day without a great website is money left on the table.</p>
+          </div>
+          <div class="benefit-list">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Mobile-First Design</h4>
+                <p>Built for phones first, then tablets and desktops. Perfect display on every screen size.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Fast Load Times</h4>
+                <p>A slow website kills conversions. Your site will load quickly so visitors stay and take action.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.1 2.38 2 2 0 012.07.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Built to Convert</h4>
+                <p>Strategic placement of calls-to-action, contact forms, click-to-call buttons, and booking tools.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>SEO Foundation</h4>
+                <p>Proper on-page SEO setup so search engines can find and rank your site for local searches.</p>
+              </div>
+            </div>
+          </div>
+          <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary btn-inline">Get a Website Built &rarr;</a>
+        </div>
+        <div class="fade-in service-visual-col">
+          <!-- Browser Mockup -->
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+              </div>
+              <div class="browser-url">yourlocalbusiness.com</div>
+            </div>
+            <div class="browser-content">
+              <div class="mock-nav">
+                <div class="mock-logo"></div>
+                <div class="mock-nav-links">
+                  <div class="mock-nav-link"></div>
+                  <div class="mock-nav-link"></div>
+                  <div class="mock-nav-link"></div>
+                </div>
+                <div class="mock-nav-btn"></div>
+              </div>
+              <div class="mock-hero">
+                <div class="mock-hero-h"></div>
+                <div class="mock-hero-h sm"></div>
+                <div class="mock-hero-btn"></div>
+              </div>
+              <div class="mock-cards">
+                <div class="mock-card">
+                  <div class="mock-card-icon"></div>
+                  <div class="mock-card-line"></div>
+                  <div class="mock-card-line short"></div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-card-icon"></div>
+                  <div class="mock-card-line"></div>
+                  <div class="mock-card-line short"></div>
+                </div>
+                <div class="mock-card">
+                  <div class="mock-card-icon"></div>
+                  <div class="mock-card-line"></div>
+                  <div class="mock-card-line short"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Service Detail Card -->
+          <div class="service-detail-card">
+            <div class="service-detail-header">
+              <div class="icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div>
+                <div class="service-detail-title">Website Design</div>
+                <div class="service-detail-desc">A professional, results-driven website tailored to your business</div>
+              </div>
+            </div>
+            <div class="service-detail-body">
+              <div class="include-section">
+                <div class="include-title">What's Included</div>
+                <ul class="feature-list">
+                  <li>Custom design built around your brand</li>
+                  <li>Mobile-first, responsive layout</li>
+                  <li>Contact forms with email notifications</li>
+                  <li>Click-to-call and click-to-email buttons</li>
+                  <li>Online booking or appointment tools</li>
+                  <li>Basic on-page SEO (titles, meta, headings)</li>
+                  <li>Google Business Profile integration</li>
+                  <li>Photo gallery or portfolio section</li>
+                  <li>Services / menu / pricing page</li>
+                  <li>Testimonials or review section</li>
+                  <li>Fast hosting setup assistance</li>
+                  <li>Post-launch support and updates</li>
+                </ul>
+              </div>
+              <div class="include-section include-section-mt">
+                <div class="include-title">Great For</div>
+                <ul class="feature-list">
+                  <li>Restaurants, salons, and retail shops</li>
+                  <li>Contractors, plumbers, electricians</li>
+                  <li>Health, fitness, and wellness businesses</li>
+                  <li>Real estate and service providers</li>
+                  <li>Any local business with no site or a bad one</li>
+                </ul>
+              </div>
+              <div class="process-mini process-mini-section">
+                <div class="include-title process-mini-title">How Website Projects Work</div>
+                <div class="process-mini-step">
+                  <div class="process-mini-num">1</div>
+                  <div class="process-mini-text"><h4>Discovery Call</h4><p>We talk about your business, goals, and what you need the site to do.</p></div>
+                </div>
+                <div class="process-mini-step">
+                  <div class="process-mini-num">2</div>
+                  <div class="process-mini-text"><h4>Design &amp; Build</h4><p>I design and build the site, keeping you updated throughout.</p></div>
+                </div>
+                <div class="process-mini-step">
+                  <div class="process-mini-num">3</div>
+                  <div class="process-mini-text"><h4>Review &amp; Launch</h4><p>You review, request any changes, then we go live.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER -->
+  <div style="position:relative;z-index:1;"><hr class="divider" /></div>
+
+  <!-- SERVICE 2: ADS -->
+  <section class="section">
+    <div class="container">
+      <div class="service-block reverse">
+        <div class="fade-in service-visual-col">
+          <!-- Dashboard Mockup -->
+          <div class="dashboard-mockup">
+            <div class="dash-header">
+              <div class="dash-title">Campaign Dashboard</div>
+              <div class="dash-badge">Live</div>
+            </div>
+            <div class="dash-metrics">
+              <div class="dash-metric">
+                <div class="dash-metric-val">+34%</div>
+                <div class="dash-metric-label">Clicks</div>
+              </div>
+              <div class="dash-metric">
+                <div class="dash-metric-val blue">189</div>
+                <div class="dash-metric-label">Leads</div>
+              </div>
+              <div class="dash-metric">
+                <div class="dash-metric-val purple">4.2x</div>
+                <div class="dash-metric-label">ROAS</div>
+              </div>
+            </div>
+            <div class="dash-chart">
+              <div class="dash-chart-label">Weekly Performance</div>
+              <div class="dash-bars">
+                <div class="dash-bar" style="height:40%;background:rgba(79,110,247,0.4);"></div>
+                <div class="dash-bar" style="height:55%;background:rgba(79,110,247,0.5);"></div>
+                <div class="dash-bar" style="height:45%;background:rgba(79,110,247,0.4);"></div>
+                <div class="dash-bar" style="height:70%;background:rgba(96,96,245,0.6);"></div>
+                <div class="dash-bar" style="height:65%;background:rgba(96,96,245,0.55);"></div>
+                <div class="dash-bar" style="height:85%;background:rgba(124,58,237,0.7);"></div>
+                <div class="dash-bar" style="height:100%;background:linear-gradient(180deg,#7c3aed,#4f6ef7);"></div>
+              </div>
+            </div>
+            <div class="dash-platforms">
+              <div class="dash-platform-pill">Google Ads</div>
+              <div class="dash-platform-pill">Meta Ads</div>
+              <div class="dash-platform-pill">Instagram Ads</div>
+            </div>
+          </div>
+          <!-- Service Detail Card -->
+          <div class="service-detail-card">
+            <div class="service-detail-header">
+              <div class="icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
+              <div>
+                <div class="service-detail-title">Targeted Ad Management</div>
+                <div class="service-detail-desc">Paid ad campaigns that reach local buyers actively looking for what you offer</div>
+              </div>
+            </div>
+            <div class="service-detail-body">
+              <div class="include-section">
+                <div class="include-title">What's Included</div>
+                <ul class="feature-list">
+                  <li>Complete campaign strategy and setup</li>
+                  <li>Ad creative (images/text) and copywriting</li>
+                  <li>Precise local audience targeting</li>
+                  <li>Keyword research (Google) and interest targeting (Meta)</li>
+                  <li>A/B testing of ad variations</li>
+                  <li>Weekly performance monitoring</li>
+                  <li>Budget management and optimization</li>
+                  <li>Conversion tracking setup</li>
+                  <li>Regular performance reports</li>
+                  <li>Monthly strategy reviews</li>
+                </ul>
+              </div>
+              <div class="platform-pills">
+                <div class="pill">Google Ads</div>
+                <div class="pill">Meta Ads</div>
+                <div class="pill">Instagram Ads</div>
+              </div>
+              <div class="ad-spend-note">
+                <div class="include-title">Ad Spend Note</div>
+                <p class="ad-spend-text">My management fee is separate from your ad spend budget. I work with businesses of all sizes and will find the right budget for your goals during our free strategy call.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="service-text-side fade-in">
+          <div>
+            <div class="section-label">Service 02</div>
+            <h2 class="section-title">Targeted Ad Management</h2>
+            <p class="section-sub service-sub">
+              Running ads without a strategy is burning money. I set up and manage data-driven campaigns on Google and Facebook that target the exact customers you want, in your local area, at the right moment.
+            </p>
+          </div>
+          <div class="service-why">
+            <h4>Why this matters</h4>
+            <p>Done right, paid ads are the fastest way to get in front of local customers who are already searching for what you offer. Done wrong, it's expensive noise. I handle the strategy, creative, and optimization so every dollar works as hard as possible.</p>
+          </div>
+          <div class="benefit-list">
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Hyper-Local Targeting</h4>
+                <p>Ads shown only to people in your service area — not wasted impressions across the country.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Compelling Creative</h4>
+                <p>Ad copy and visuals designed to stop the scroll and get people to click, call, or visit.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Continuous Optimization</h4>
+                <p>I test, measure, and optimize weekly — cutting what doesn't work and scaling what does.</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="benefit-text">
+                <h4>Transparent Reporting</h4>
+                <p>Regular reports in plain English — clicks, calls, leads, and spend. No jargon, just results.</p>
+              </div>
+            </div>
+          </div>
+          <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary btn-inline">Start Running Ads &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <div class="section-label">Why Choose Me</div>
+        <h2 class="section-title">How I Compare</h2>
+        <p class="section-sub">See how working with Isaac's Digital Services stacks up against other options.</p>
+      </div>
+      <div class="card fade-in compare-card">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>What you get</th>
+              <th>Isaac's Digital</th>
+              <th>Big Agency</th>
+              <th>DIY</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Personal, direct communication</td><td><span class="check">&#10003; Always</span></td><td><span class="cross">Account manager</span></td><td><span class="cross">Just you</span></td></tr>
+            <tr><td>Custom strategy for your business</td><td><span class="check">&#10003; Yes</span></td><td><span class="cross">Often templated</span></td><td><span class="cross">Guesswork</span></td></tr>
+            <tr><td>Transparent pricing</td><td><span class="check">&#10003; Always</span></td><td><span class="cross">Often hidden fees</span></td><td><span class="check">&#10003; (your time)</span></td></tr>
+            <tr><td>Local market focus</td><td><span class="check">&#10003; Local business focus</span></td><td><span class="cross">Generic</span></td><td><span class="cross">Hard to know</span></td></tr>
+            <tr><td>Weekly optimization &amp; reporting</td><td><span class="check">&#10003; Included</span></td><td><span class="check">&#10003; (costly)</span></td><td><span class="cross">Rarely happens</span></td></tr>
+            <tr><td>Free strategy call to start</td><td><span class="check">&#10003; Yes</span></td><td><span class="cross">Rarely</span></td><td><span class="cross">N/A</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING SECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <p class="section-sub">No hidden fees. No surprises. Here's what to expect before we even talk.</p>
+      </div>
+      <div class="pricing-grid fade-in">
+        <div class="pricing-card">
+          <div class="pricing-card-label">Website Design</div>
+          <div class="pricing-card-title">Professional Website</div>
+          <div>
+            <div class="pricing-amount">Starting at $3,500</div>
+            <div class="pricing-amount-sub">One-time project investment</div>
+          </div>
+          <ul class="feature-list pricing-list">
+            <li>Custom design tailored to your brand</li>
+            <li>Mobile-first, fast-loading build</li>
+            <li>Contact forms, booking &amp; calls-to-action</li>
+            <li>On-page SEO setup included</li>
+            <li>Post-launch support</li>
+          </ul>
+          <div class="pricing-note">
+            <strong>Base price.</strong> Final investment varies based on your requirements, page count, and functionality. A custom quote is included in your free strategy call, no obligation.
+          </div>
+          <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary btn-full">Get a Custom Quote &rarr;</a>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-card-label">Ad Management</div>
+          <div class="pricing-card-title">Targeted Ad Campaigns</div>
+          <div>
+            <div class="pricing-amount">Starting at $1,000<span style="font-size:1.2rem;">/mo</span></div>
+            <div class="pricing-amount-sub">Monthly management fee</div>
+          </div>
+          <ul class="feature-list pricing-list">
+            <li>Full campaign strategy &amp; setup</li>
+            <li>Ad creative &amp; copywriting</li>
+            <li>Weekly optimization &amp; A/B testing</li>
+            <li>Conversion tracking &amp; reporting</li>
+            <li>Google, Meta &amp; Instagram ads</li>
+          </ul>
+          <div class="pricing-note">
+            <strong>Management fee only.</strong> Your ad spend budget (paid directly to Google/Meta) is <strong>separate and additional</strong> on top of this fee. Minimum ad spend recommendations will be provided in your free strategy call based on your goals.
+          </div>
+          <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary btn-full">Book Your Strategy Call &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common Questions</h2>
+      </div>
+      <div class="faq-list faq-centered">
+        <div class="faq-item fade-in">
+          <div class="faq-q">How much does it cost? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Websites start at $3,500 and increase based on your requirements, page count, and functionality. Ad management starts at $1,000/month (management fee only; your ad spend budget is paid separately directly to Google or Meta). After our free strategy call, I'll put together a clear, itemized proposal with no hidden fees.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">Do I need both services? <span class="faq-icon">+</span></div>
+          <div class="faq-a">No. You can start with just a website or just ad management, depending on what your business needs most right now. That said, they work best together: a great website makes your ads more effective, and ads drive traffic to your website. I'll recommend what makes the most sense for you.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">How long does a website take to build? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Typically 2&ndash;4 weeks from our initial discovery call to launch, depending on complexity and how quickly we can gather your content (photos, copy, etc.). I keep you updated throughout and won't launch until you're satisfied.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">How long until I see results from ads? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Ads can start driving traffic within days of launching. However, the first 2&ndash;4 weeks are an optimization period. I gather data, test what works, and refine the campaigns. Most clients see meaningful results within the first month.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">What do I need to provide? <span class="faq-icon">+</span></div>
+          <div class="faq-a">For a website: your logo (if you have one), photos, and any existing content. I can help with copy and suggest stock imagery if needed. For ads: access to your ad accounts (I'll help you set these up if you don't have them) and any promotions or messaging you want to highlight.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">Is there a contract? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Ad management is a month-to-month agreement with no long-term lock-in. Website projects are one-time engagements with clear deliverables. You're never trapped. If you're not happy with the results, we talk about it and figure it out together.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text fade-in">
+          <h2>Let's Build Your<br/>Online Presence</h2>
+          <p>Book a free 15-minute call. I'll learn about your business and tell you exactly what I'd recommend, with zero pressure to buy anything.</p>
+        </div>
+        <div class="cta-actions fade-in">
+          <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary">Book a Free Call</a>
+          <a href="how-it-works.html" class="btn-secondary">See How It Works &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="site-logo">
+            <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+            <span class="logo-text">Isaac's Digital</span>
+          </a>
+          <p class="footer-tagline">Helping local businesses stop the guesswork and start growing online.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <div class="footer-col-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-col-links">
+            <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>
+            <a href="https://isaacsdigital.com" style="color:var(--muted);">isaacsdigital.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2025 Isaac's Digital Services. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

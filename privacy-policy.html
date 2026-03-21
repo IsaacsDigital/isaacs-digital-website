@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Isaac's Digital Services</title>
+  <meta name="description" content="Privacy Policy for Isaac's Digital Services. Learn how we collect, process, and protect your personal information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .legal-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+    .legal-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 12px; }
+    .legal-hero .last-updated {
+      display: inline-block;
+      background: rgba(79,110,247,0.1);
+      border: 1px solid rgba(79,110,247,0.25);
+      color: var(--accent);
+      border-radius: 100px;
+      padding: 5px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .legal-hero p { color: var(--muted); max-width: 640px; margin: 0 auto; line-height: 1.7; }
+
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      margin-bottom: 8px;
+    }
+    .summary-card h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) { .summary-grid { grid-template-columns: 1fr; } }
+    .summary-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+    }
+    .summary-item strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .summary-item p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      align-items: start;
+      padding-bottom: 80px;
+    }
+    @media (max-width: 860px) {
+      .legal-layout { grid-template-columns: 1fr; }
+      .toc-card { display: none; }
+    }
+
+    .toc-card {
+      position: sticky;
+      top: 100px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .toc-card h3 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .toc-list a {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding: 5px 8px;
+      border-radius: 6px;
+      line-height: 1.45;
+      transition: background 0.15s, color 0.15s;
+    }
+    .toc-list a:hover { background: rgba(255,255,255,0.05); color: var(--text); }
+
+    .legal-content { display: flex; flex-direction: column; gap: 0; }
+    .legal-section {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-section:last-child { border-bottom: none; }
+    .legal-section h2 {
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+    .legal-section .section-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .legal-section p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.93rem;
+      margin-bottom: 12px;
+    }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section ul {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.93rem;
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    .legal-section ul li { margin-bottom: 6px; }
+    .legal-section h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 20px 0 8px;
+    }
+    .legal-section a { color: var(--accent); }
+    .legal-section a:hover { text-decoration: underline; }
+    .legal-section strong { color: var(--text); font-weight: 600; }
+    .in-short {
+      background: rgba(79,110,247,0.06);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 10px 16px;
+      margin-bottom: 16px;
+    }
+    .in-short p { color: var(--muted); font-size: 0.875rem !important; margin: 0 !important; line-height: 1.6 !important; }
+    .in-short p strong { color: var(--accent); }
+
+    .privacy-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 16px;
+      font-size: 0.875rem;
+    }
+    .privacy-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .privacy-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .privacy-table td.yes { color: #4ade80; font-weight: 600; }
+    .privacy-table td.no { color: var(--muted); }
+    @media (max-width: 700px) {
+      .privacy-table { font-size: 0.8rem; }
+      .privacy-table th, .privacy-table td { padding: 8px 10px; }
+    }
+
+    .legal-back {
+      text-align: center;
+      margin-top: 48px;
+      padding-bottom: 80px;
+    }
+    .legal-back a {
+      color: var(--muted);
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .legal-back a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="site-logo">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+        <span class="logo-text">Isaac's Digital</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta">Book Free Call</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">&#x2715;</button>
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="services.html" onclick="closeMobile()">Services</a>
+    <a href="how-it-works.html" onclick="closeMobile()">How It Works</a>
+    <a href="about.html" onclick="closeMobile()">About</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+    <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta" onclick="closeMobile()">Book Free Call</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="legal-hero">
+    <div class="container">
+      <div class="last-updated">Last updated: January 20, 2026</div>
+      <h1>Privacy Policy</h1>
+      <p>This Privacy Notice describes how and why we might access, collect, store, use, and/or share your personal information when you use our services.</p>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section style="padding-bottom: 0;">
+    <div class="container">
+
+      <!-- Summary card -->
+      <div class="summary-card">
+        <h2>Summary of Key Points</h2>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <strong>What personal information do we process?</strong>
+            <p>When you visit, use, or navigate our Services, we may process personal information depending on how you interact with us, the choices you make, and the products and features you use.</p>
+          </div>
+          <div class="summary-item">
+            <strong>Do we process sensitive personal information?</strong>
+            <p>We do not process sensitive personal information.</p>
+          </div>
+          <div class="summary-item">
+            <strong>Do we collect from third parties?</strong>
+            <p>We do not collect any information from third parties.</p>
+          </div>
+          <div class="summary-item">
+            <strong>How do we process your information?</strong>
+            <p>We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</p>
+          </div>
+          <div class="summary-item">
+            <strong>How do we keep your information safe?</strong>
+            <p>We have adequate organizational and technical processes and procedures in place to protect your personal information.</p>
+          </div>
+          <div class="summary-item">
+            <strong>What are your rights?</strong>
+            <p>Depending on where you are located geographically, the applicable privacy law may mean you have certain rights regarding your personal information.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="legal-layout">
+
+        <aside>
+          <div class="toc-card">
+            <h3>Table of Contents</h3>
+            <ul class="toc-list">
+              <li><a href="#collect">1. What We Collect</a></li>
+              <li><a href="#process">2. How We Process</a></li>
+              <li><a href="#legalbases">3. Legal Bases</a></li>
+              <li><a href="#share">4. When We Share</a></li>
+              <li><a href="#international">5. International Transfers</a></li>
+              <li><a href="#retention">6. Retention</a></li>
+              <li><a href="#safe">7. Keeping Info Safe</a></li>
+              <li><a href="#minors">8. Minors</a></li>
+              <li><a href="#rights">9. Your Privacy Rights</a></li>
+              <li><a href="#dnt">10. Do-Not-Track</a></li>
+              <li><a href="#usrights">11. US Residents' Rights</a></li>
+              <li><a href="#updates">12. Updates to Notice</a></li>
+              <li><a href="#contactus">13. Contact Us</a></li>
+              <li><a href="#delete">14. Review / Delete Data</a></li>
+            </ul>
+          </div>
+        </aside>
+
+        <div class="legal-content">
+
+          <div class="legal-section" id="collect">
+            <div class="section-num">Section 1</div>
+            <h2>What Information Do We Collect?</h2>
+            <h3>Personal information you disclose to us</h3>
+            <div class="in-short"><p><strong>In Short:</strong> We collect personal information that you provide to us.</p></div>
+            <p>We collect personal information that you voluntarily provide to us when you express an interest in obtaining information about us or our products and Services, when you participate in activities on the Services, or otherwise when you contact us.</p>
+            <p><strong>Personal Information Provided by You.</strong> The personal information we collect may include the following: names, email addresses.</p>
+            <p><strong>Sensitive Information.</strong> We do not process sensitive information.</p>
+            <p><strong>Payment Data.</strong> We may collect data necessary to process your payment if you choose to make purchases, such as your payment instrument number, and the security code associated with your payment instrument. All payment data is handled and stored by Stripe. You may find their privacy notice at <a href="https://stripe.com/privacy" rel="noopener noreferrer">https://stripe.com/privacy</a>.</p>
+            <p>All personal information that you provide to us must be true, complete, and accurate, and you must notify us of any changes to such personal information.</p>
+          </div>
+
+          <div class="legal-section" id="process">
+            <div class="section-num">Section 2</div>
+            <h2>How Do We Process Your Information?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</p></div>
+            <p>We process your personal information for a variety of reasons, depending on how you interact with our Services, including:</p>
+            <ul>
+              <li><strong>To deliver and facilitate delivery of services to the user.</strong> We may process your information to provide you with the requested service.</li>
+              <li><strong>To respond to user inquiries/offer support to users.</strong> We may process your information to respond to your inquiries and solve any potential issues you might have with the requested service.</li>
+              <li><strong>To send administrative information to you.</strong> We may process your information to send you details about our products and services, changes to our terms and policies, and other similar information.</li>
+              <li><strong>To save or protect an individual's vital interest.</strong> We may process your information when necessary to save or protect an individual's vital interest, such as to prevent harm.</li>
+            </ul>
+          </div>
+
+          <div class="legal-section" id="legalbases">
+            <div class="section-num">Section 3</div>
+            <h2>What Legal Bases Do We Rely On to Process Your Information?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> We only process your personal information when we believe it is necessary and we have a valid legal reason to do so under applicable law.</p></div>
+            <h3>If you are located in the EU or UK</h3>
+            <p>The General Data Protection Regulation (GDPR) and UK GDPR require us to explain the valid legal bases we rely on in order to process your personal information. We may rely on the following legal bases:</p>
+            <ul>
+              <li><strong>Consent.</strong> We may process your information if you have given us permission to use your personal information for a specific purpose. You can withdraw your consent at any time.</li>
+              <li><strong>Performance of a Contract.</strong> We may process your personal information when we believe it is necessary to fulfill our contractual obligations to you, including providing our Services or at your request prior to entering into a contract with you.</li>
+              <li><strong>Legal Obligations.</strong> We may process your information where we believe it is necessary for compliance with our legal obligations, such as to cooperate with a law enforcement body or regulatory agency, exercise or defend our legal rights, or disclose your information as evidence in litigation in which we are involved.</li>
+              <li><strong>Vital Interests.</strong> We may process your information where we believe it is necessary to protect your vital interests or the vital interests of a third party, such as situations involving potential threats to the safety of any person.</li>
+            </ul>
+            <h3>If you are located in Canada</h3>
+            <p>We may process your information if you have given us specific permission (i.e., express consent) to use your personal information for a specific purpose, or in situations where your permission can be inferred (i.e., implied consent). You can withdraw your consent at any time.</p>
+            <p>In some exceptional cases, we may be legally permitted under applicable law to process your information without your consent, including for investigations and fraud detection and prevention, for business transactions provided certain conditions are met, or if disclosure is required to comply with a subpoena, warrant, court order, or rules of the court relating to the production of records.</p>
+          </div>
+
+          <div class="legal-section" id="share">
+            <div class="section-num">Section 4</div>
+            <h2>When and With Whom Do We Share Your Personal Information?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> We may share information in specific situations described in this section and/or with the following third parties.</p></div>
+            <p><strong>Vendors, Consultants, and Other Third-Party Service Providers.</strong> We may share your data with third-party vendors, service providers, contractors, or agents ("third parties") who perform services for us or on our behalf. We have contracts in place with our third parties, which are designed to help safeguard your personal information.</p>
+            <p>The third parties we may share personal information with are as follows:</p>
+            <ul>
+              <li><strong>Communicate and Chat with Users:</strong> <a href="https://explore.zoom.us/en/privacy/" target="_blank" rel="noopener noreferrer">Zoom</a></li>
+              <li><strong>Invoice and Billing:</strong> <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">Stripe</a></li>
+              <li><strong>Website Hosting:</strong> <a href="https://automattic.com/privacy/" target="_blank" rel="noopener noreferrer">WordPress</a>, <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel</a></li>
+              <li><strong>Business Operations &amp; Service Delivery:</strong> <a href="https://calendly.com/privacy" target="_blank" rel="noopener noreferrer">Calendly</a></li>
+            </ul>
+            <p>We also may need to share your personal information in connection with, or during negotiations of, any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</p>
+          </div>
+
+          <div class="legal-section" id="international">
+            <div class="section-num">Section 5</div>
+            <h2>Is Your Information Transferred Internationally?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> We may transfer, store, and process your information in countries other than your own.</p></div>
+            <p>Our servers are located in the United States. Regardless of your location, please be aware that your information may be transferred to, stored by, and processed by us in our facilities and in the facilities of the third parties with whom we may share your personal information, including facilities in the United States.</p>
+            <p>If you are a resident in the European Economic Area (EEA), United Kingdom (UK), or Switzerland, then these countries may not necessarily have data protection laws as comprehensive as those in your country. However, we will take all necessary measures to protect your personal information in accordance with this Privacy Notice and applicable law.</p>
+            <p><strong>European Commission's Standard Contractual Clauses:</strong> We have implemented measures to protect your personal information, including by using the European Commission's Standard Contractual Clauses for transfers of personal information. These clauses require all recipients to protect all personal information that they process originating from the EEA or UK in accordance with European data protection laws and regulations. Our Standard Contractual Clauses can be provided upon request.</p>
+          </div>
+
+          <div class="legal-section" id="retention">
+            <div class="section-num">Section 6</div>
+            <h2>How Long Do We Keep Your Information?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> We keep your information for as long as necessary to fulfill the purposes outlined in this Privacy Notice unless otherwise required by law.</p></div>
+            <p>We will only keep your personal information for as long as it is necessary for the purposes set out in this Privacy Notice, unless a longer retention period is required or permitted by law (such as tax, accounting, or other legal requirements). When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize such information, or, if this is not possible (for example, because your personal information has been stored in backup archives), then we will securely store your personal information and isolate it from any further processing until deletion is possible.</p>
+          </div>
+
+          <div class="legal-section" id="safe">
+            <div class="section-num">Section 7</div>
+            <h2>How Do We Keep Your Information Safe?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> We aim to protect your personal information through a system of organizational and technical security measures.</p></div>
+            <p>We have implemented appropriate and reasonable technical and organizational security measures designed to protect the security of any personal information we process. However, despite our safeguards and efforts to secure your information, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure, so we cannot promise or guarantee that hackers, cybercriminals, or other unauthorized third parties will not be able to defeat our security and improperly collect, access, steal, or modify your information. Although we will do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. You should only access the Services within a secure environment.</p>
+          </div>
+
+          <div class="legal-section" id="minors">
+            <div class="section-num">Section 8</div>
+            <h2>Do We Collect Information from Minors?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> We do not knowingly collect data from or market to children under 18 years of age.</p></div>
+            <p>We do not knowingly collect, solicit data from, or market to children under 18 years of age, nor do we knowingly sell such personal information. By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent's use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we may have collected from children under age 18, please contact us at <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>.</p>
+          </div>
+
+          <div class="legal-section" id="rights">
+            <div class="section-num">Section 9</div>
+            <h2>What Are Your Privacy Rights?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> Depending on your state of residence in the US or in some regions, such as the EEA, UK, Switzerland, and Canada, you have rights that allow you greater access to and control over your personal information.</p></div>
+            <p>In some regions (like the EEA, UK, Switzerland, and Canada), you have certain rights under applicable data protection laws. These may include the right (i) to request access and obtain a copy of your personal information, (ii) to request rectification or erasure; (iii) to restrict the processing of your personal information; (iv) if applicable, to data portability; and (v) not to be subject to automated decision-making.</p>
+            <p>In certain circumstances, you may also have the right to object to the processing of your personal information. You can make such a request by contacting us by using the contact details provided in the section "HOW CAN YOU CONTACT US ABOUT THIS NOTICE?" below.</p>
+            <p>If you are located in the EEA or UK and you believe we are unlawfully processing your personal information, you also have the right to complain to your Member State data protection authority or UK data protection authority. If you are located in Switzerland, you may contact the Federal Data Protection and Information Commissioner.</p>
+            <p><strong>Withdrawing your consent:</strong> If we are relying on your consent to process your personal information, you have the right to withdraw your consent at any time by contacting us using the contact details provided below. This will not affect the lawfulness of the processing before its withdrawal.</p>
+            <p>If you have questions or comments about your privacy rights, you may email us at <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>.</p>
+          </div>
+
+          <div class="legal-section" id="dnt">
+            <div class="section-num">Section 10</div>
+            <h2>Controls for Do-Not-Track Features</h2>
+            <p>Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ("DNT") feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. At this stage, no uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this Privacy Notice.</p>
+            <p>California law requires us to let you know how we respond to web browser DNT signals. Because there currently is not an industry or legal standard for recognizing or honoring DNT signals, we do not respond to them at this time.</p>
+          </div>
+
+          <div class="legal-section" id="usrights">
+            <div class="section-num">Section 11</div>
+            <h2>Do United States Residents Have Specific Privacy Rights?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> If you are a resident of California, Colorado, Connecticut, Delaware, Florida, Indiana, Iowa, Kentucky, Maryland, Minnesota, Montana, Nebraska, New Hampshire, New Jersey, Oregon, Rhode Island, Tennessee, Texas, Utah, or Virginia, you may have specific rights regarding your personal information.</p></div>
+            <p>You may have the right to request access to and receive details about the personal information we maintain about you and how we have processed it, correct inaccuracies, get a copy of, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law.</p>
+            <h3>Categories of Personal Information We Collect</h3>
+            <p>The table below shows the categories of personal information we have collected in the past twelve (12) months.</p>
+            <table class="privacy-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Examples</th>
+                  <th>Collected</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>A. Identifiers</td>
+                  <td>Contact details, such as real name, alias, postal address, telephone or mobile contact number, unique personal identifier, online identifier, Internet Protocol address, email address, and account name</td>
+                  <td class="yes">YES</td>
+                </tr>
+                <tr>
+                  <td>B. Personal information as defined in the California Customer Records statute</td>
+                  <td>Name, contact information, education, employment, employment history, and financial information</td>
+                  <td class="yes">YES</td>
+                </tr>
+                <tr>
+                  <td>C. Protected classification characteristics under state or federal law</td>
+                  <td>Gender, age, date of birth, race and ethnicity, national origin, marital status, and other demographic data</td>
+                  <td class="no">NO</td>
+                </tr>
+                <tr>
+                  <td>D. Commercial information</td>
+                  <td>Transaction information, purchase history, financial details, and payment information</td>
+                  <td class="yes">YES</td>
+                </tr>
+                <tr>
+                  <td>E. Biometric information</td>
+                  <td>Fingerprints and voiceprints</td>
+                  <td class="yes">YES</td>
+                </tr>
+                <tr>
+                  <td>F. Internet or other similar network activity</td>
+                  <td>Browsing history, search history, online behavior, interest data, and interactions with our and other websites, applications, systems, and advertisements</td>
+                  <td class="no">NO</td>
+                </tr>
+                <tr>
+                  <td>G. Geolocation data</td>
+                  <td>Device location</td>
+                  <td class="no">NO</td>
+                </tr>
+                <tr>
+                  <td>H. Audio, electronic, sensory, or similar information</td>
+                  <td>Images and audio, video or call recordings created in connection with our business activities</td>
+                  <td class="yes">YES</td>
+                </tr>
+                <tr>
+                  <td>I. Professional or employment-related information</td>
+                  <td>Business contact details in order to provide you our Services at a business level or job title, work history, and professional qualifications if you apply for a job with us</td>
+                  <td class="no">NO</td>
+                </tr>
+                <tr>
+                  <td>J. Education Information</td>
+                  <td>Student records and directory information</td>
+                  <td class="no">NO</td>
+                </tr>
+                <tr>
+                  <td>K. Inferences drawn from collected personal information</td>
+                  <td>Inferences drawn from any of the collected personal information listed above to create a profile or summary about, for example, an individual's preferences and characteristics</td>
+                  <td class="no">NO</td>
+                </tr>
+                <tr>
+                  <td>L. Sensitive personal Information</td>
+                  <td></td>
+                  <td class="no">NO</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3>Your Rights</h3>
+            <p>You have rights under certain US state data protection laws. These rights include:</p>
+            <ul>
+              <li>Right to know whether or not we are processing your personal data</li>
+              <li>Right to access your personal data</li>
+              <li>Right to correct inaccuracies in your personal data</li>
+              <li>Right to request the deletion of your personal data</li>
+              <li>Right to obtain a copy of the personal data you previously shared with us</li>
+              <li>Right to non-discrimination for exercising your rights</li>
+              <li>Right to opt out of the processing of your personal data if it is used for targeted advertising, the sale of personal data, or profiling in furtherance of decisions that produce legal or similarly significant effects</li>
+            </ul>
+            <h3>How to Exercise Your Rights</h3>
+            <p>To exercise these rights, you can contact us by emailing us at <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>.</p>
+            <p>Under certain US state data protection laws, you can designate an authorized agent to make a request on your behalf. We may deny a request from an authorized agent that does not submit proof that they have been validly authorized to act on your behalf in accordance with applicable laws.</p>
+            <h3>Appeals</h3>
+            <p>Under certain US state data protection laws, if we decline to take action regarding your request, you may appeal our decision by emailing us at <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>. We will inform you in writing of any action taken or not taken in response to the appeal. If your appeal is denied, you may submit a complaint to your state attorney general.</p>
+            <h3>California "Shine The Light" Law</h3>
+            <p>California Civil Code Section 1798.83, also known as the "Shine The Light" law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes. If you are a California resident and would like to make such a request, please submit your request in writing to us by using the contact details provided in the section below.</p>
+          </div>
+
+          <div class="legal-section" id="updates">
+            <div class="section-num">Section 12</div>
+            <h2>Do We Make Updates to This Notice?</h2>
+            <div class="in-short"><p><strong>In Short:</strong> Yes, we will update this notice as necessary to stay compliant with relevant laws.</p></div>
+            <p>We may update this Privacy Notice from time to time. The updated version will be indicated by an updated "Revised" date at the top of this Privacy Notice. If we make material changes to this Privacy Notice, we may notify you either by prominently posting a notice of such changes or by directly sending you a notification. We encourage you to review this Privacy Notice frequently to be informed of how we are protecting your information.</p>
+          </div>
+
+          <div class="legal-section" id="contactus">
+            <div class="section-num">Section 13</div>
+            <h2>How Can You Contact Us About This Notice?</h2>
+            <p>If you have questions or comments about this notice, you may email us at <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>.</p>
+            <p>
+              Isaac's Digital<br>
+              <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>
+            </p>
+          </div>
+
+          <div class="legal-section" id="delete">
+            <div class="section-num">Section 14</div>
+            <h2>How Can You Review, Update, or Delete the Data We Collect from You?</h2>
+            <p>Based on the applicable laws of your country or state of residence in the US, you may have the right to request access to the personal information we collect from you, details about how we have processed it, correct inaccuracies, or delete your personal information. You may also have the right to withdraw your consent to our processing of your personal information. These rights may be limited in some circumstances by applicable law.</p>
+            <p>To request to review, update, or delete your personal information, please contact us at <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="legal-back">
+        <a href="index.html">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Back to Home
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="site-logo">
+            <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+            <span class="logo-text">Isaac's Digital</span>
+          </a>
+          <p class="footer-tagline">Helping local businesses stop the guesswork and start growing online.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <div class="footer-col-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-col-links">
+            <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>
+            <a href="https://isaacsdigital.com" style="color:var(--muted);">isaacsdigital.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2025 Isaac's Digital Services. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

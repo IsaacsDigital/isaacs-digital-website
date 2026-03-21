@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isaac's Digital Services | Websites &amp; Ads for Local Businesses</title>
+  <meta name="description" content="Isaac's Digital Services builds high-converting websites and runs targeted ad campaigns for local businesses. Book a free strategy call today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Home-specific styles */
+    .hero-stats {
+      display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+      margin-top: 72px; padding-top: 48px; border-top: 1px solid var(--border);
+    }
+    /* Preview cards */
+    .preview-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;
+    }
+    .preview-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px;
+      display: flex; flex-direction: column; gap: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .preview-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(79,110,247,0.05), rgba(124,58,237,0.05));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .preview-card:hover { border-color: rgba(79,110,247,0.4); transform: translateY(-2px); }
+    .preview-card:hover::before { opacity: 1; }
+    .preview-card-icon { width: 44px; height: 44px; }
+    .preview-card h3 { font-size: 1.2rem; font-weight: 700; }
+    .preview-card p { color: var(--muted); font-size: 0.92rem; line-height: 1.65; flex: 1; }
+    .preview-card .card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.875rem; font-weight: 600; color: var(--accent);
+      transition: gap 0.2s;
+    }
+    .preview-card .card-link:hover { gap: 10px; }
+    /* Intro section */
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .intro-visual {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px; display: flex; flex-direction: column; gap: 20px;
+    }
+    .mini-stat-row { display: flex; gap: 16px; }
+    .mini-stat {
+      flex: 1; background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 20px; text-align: center;
+    }
+    .mini-stat-num { font-size: 1rem; font-weight: 800; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 0.04em; }
+    .mini-stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+    .checklist { display: flex; flex-direction: column; gap: 12px; }
+    .check-item { display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; }
+    .check-item::before {
+      content: ''; flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(79,110,247,0.15);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f6ef7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+      background-size: 12px; background-repeat: no-repeat; background-position: center; margin-top: 1px;
+    }
+    @media (max-width: 900px) { .intro-grid { grid-template-columns: 1fr; gap: 40px; } }
+    .intro-sub { margin-top: 16px; }
+    .intro-checklist { margin-top: 32px; }
+    .intro-actions { margin-top: 36px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .intro-features-panel { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px; }
+    .intro-features-panel .panel-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 14px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="site-logo">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+        <span class="logo-text">Isaac's Digital</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta">Book Free Call</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu" aria-label="Close menu">&#x2715;</button>
+    <a href="index.html" class="active" onclick="closeMobile()">Home</a>
+    <a href="services.html" onclick="closeMobile()">Services</a>
+    <a href="how-it-works.html" onclick="closeMobile()">How It Works</a>
+    <a href="about.html" onclick="closeMobile()">About</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+    <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta" onclick="closeMobile()">Book Free Call</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge fade-in">
+        <span></span>
+        Website Design &amp; Ad Management for Local Businesses
+      </div>
+      <h1 class="fade-in">
+        Stop Losing Customers<br/>to <span class="highlight">Competitors Online</span>
+      </h1>
+      <p class="fade-in">
+        I build high-converting websites and run targeted ad campaigns for local businesses,
+        so you show up, stand out, and turn visitors into paying customers.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary">Book a Free Strategy Call</a>
+        <a href="services.html" class="btn-secondary">See Services &rarr;</a>
+      </div>
+      <div class="hero-stats fade-in">
+        <div class="stat">
+          <div class="stat-number">15 min</div>
+          <div class="stat-label">Free strategy call, no commitment</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Focused services that work together</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">1-on-1</div>
+          <div class="stat-label">Direct access to Isaac, always</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">Full</div>
+          <div class="stat-label">Done-for-you management</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO / WHAT I DO -->
+  <section class="section alt">
+    <div class="container">
+      <div class="intro-grid">
+        <div class="fade-in">
+          <div class="section-label">What I Do</div>
+          <h2 class="section-title">A Complete Online System Built for Your Business</h2>
+          <p class="section-sub intro-sub">
+            Most local businesses lose customers online not because their service is bad —
+            but because they're invisible. I fix that with two focused services that work together
+            to attract and convert the right customers.
+          </p>
+          <div class="checklist intro-checklist">
+            <div class="check-item">Professional website that turns visitors into leads</div>
+            <div class="check-item">Targeted ads on Google and Facebook that reach local buyers</div>
+            <div class="check-item">Full management — you don't lift a finger</div>
+            <div class="check-item">Regular reporting so you always know what's working</div>
+            <div class="check-item">Free 15-minute strategy call to start, no commitment required</div>
+          </div>
+          <div class="intro-actions">
+            <a href="services.html" class="btn-primary">See All Services</a>
+            <a href="how-it-works.html" class="btn-secondary">How It Works &rarr;</a>
+          </div>
+        </div>
+        <div class="intro-visual fade-in">
+          <div class="mini-stat-row">
+            <div class="mini-stat">
+              <div class="mini-stat-num">Web</div>
+              <div class="mini-stat-label">Website Design</div>
+            </div>
+            <div class="mini-stat">
+              <div class="mini-stat-num">Ads</div>
+              <div class="mini-stat-label">Ad Management</div>
+            </div>
+          </div>
+          <div class="intro-features-panel">
+            <div class="panel-label">What you get</div>
+            <ul class="feature-list">
+              <li>Mobile-friendly, fast-loading site</li>
+              <li>Contact forms &amp; booking integration</li>
+              <li>Google &amp; Facebook ad campaigns</li>
+              <li>Weekly optimization &amp; reporting</li>
+              <li>Dedicated support from Isaac</li>
+            </ul>
+          </div>
+          <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary btn-full">
+            Book a Free Call
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREVIEW PAGES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <div class="section-label">Explore</div>
+        <h2 class="section-title">Everything You Need to Know</h2>
+        <p class="section-sub">Browse any section to learn more about how I can grow your business online.</p>
+      </div>
+      <div class="preview-grid">
+        <a href="services.html" class="preview-card fade-in">
+          <div class="preview-card-icon">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="4" y="8" width="36" height="24" rx="3" stroke="#4f6ef7" stroke-width="2"/><path d="M4 14h36" stroke="#4f6ef7" stroke-width="2"/><circle cx="9" cy="11" r="1.5" fill="#4f6ef7"/><circle cx="14" cy="11" r="1.5" fill="#6060f5"/><circle cx="19" cy="11" r="1.5" fill="#7c3aed"/><rect x="16" y="36" width="12" height="2" rx="1" fill="#4f6ef7"/><path d="M22 32v4" stroke="#4f6ef7" stroke-width="2"/></svg>
+          </div>
+          <h3>Services</h3>
+          <p>Website design and targeted ad management — two focused services that work together to build your complete online presence.</p>
+          <span class="card-link">View Services &rarr;</span>
+        </a>
+        <a href="how-it-works.html" class="preview-card fade-in fade-in-delay-1">
+          <div class="preview-card-icon">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="22" r="8" stroke="#4f6ef7" stroke-width="2"/><circle cx="22" cy="22" r="3" fill="#4f6ef7"/><path d="M22 6v4M22 34v4M6 22h4M34 22h4" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round"/><path d="M11.5 11.5l2.8 2.8M29.7 29.7l2.8 2.8M32.5 11.5l-2.8 2.8M14.3 29.7l-2.8 2.8" stroke="#7c3aed" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>How It Works</h3>
+          <p>A simple 4-step process: free call, custom plan, launch, and ongoing optimization. No confusing jargon, no surprises.</p>
+          <span class="card-link">See the Process &rarr;</span>
+        </a>
+        <a href="about.html" class="preview-card fade-in fade-in-delay-2">
+          <div class="preview-card-icon">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><circle cx="22" cy="16" r="7" stroke="#4f6ef7" stroke-width="2"/><path d="M8 38c0-7.732 6.268-14 14-14s14 6.268 14 14" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>About Isaac</h3>
+          <p>Learn who I am, why I started this business, and why local business owners trust me as their digital growth partner.</p>
+          <span class="card-link">About Me &rarr;</span>
+        </a>
+        <a href="contact.html" class="preview-card fade-in fade-in-delay-3">
+          <div class="preview-card-icon">
+            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-hidden="true"><rect x="6" y="10" width="32" height="22" rx="3" stroke="#4f6ef7" stroke-width="2"/><path d="M6 16l16 10 16-10" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Contact</h3>
+          <p>Ready to talk? Book your free 15-minute strategy call. View business hours, email, and website information here.</p>
+          <span class="card-link">Get In Touch &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text fade-in">
+          <h2>Ready to Grow<br/>Your Business Online?</h2>
+          <p>Book a free 15-minute strategy call. No commitment, no pressure. Just an honest conversation about what's holding your business back and how to fix it.</p>
+        </div>
+        <div class="cta-actions fade-in">
+          <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary">Book Your Free Call</a>
+          <a href="services.html" class="btn-secondary">See Services First &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="site-logo">
+            <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+            <span class="logo-text">Isaac's Digital</span>
+          </a>
+          <p class="footer-tagline">Helping local businesses stop the guesswork and start growing online.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <div class="footer-col-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-col-links">
+            <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>
+            <a href="https://isaacsdigital.com" style="color:var(--muted);">isaacsdigital.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2025 Isaac's Digital Services. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

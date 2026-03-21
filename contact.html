@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Isaac's Digital Services</title>
+  <meta name="description" content="Book your free 15-minute strategy call with Isaac. No commitment required. View business hours and contact information for Isaac's Digital Services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .contact-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+    /* Contact form */
+    .form-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 40px;
+    }
+    .form-card h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+    .form-card .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 32px; line-height: 1.6; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; background: var(--bg2);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 14px 16px; color: var(--text); font-family: inherit; font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+      -webkit-appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: rgba(79,110,247,0.5);
+      box-shadow: 0 0 0 3px rgba(79,110,247,0.12);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+    .form-select { cursor: pointer; }
+    .form-textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-submit {
+      width: 100%; padding: 16px; border: none; cursor: pointer;
+      background: var(--grad); color: #fff;
+      border-radius: var(--radius-pill); font-family: inherit; font-size: 1rem; font-weight: 700;
+      transition: transform 0.2s var(--ease-out), opacity 0.2s var(--ease-out);
+    }
+    .form-submit:not(:disabled):hover { transform: translateY(-2px); opacity: 0.92; }
+    .form-note { font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: 12px; line-height: 1.55; }
+    /* Info side */
+    .info-stack { display: flex; flex-direction: column; gap: 24px; }
+    .info-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px;
+    }
+    .info-card-title {
+      font-size: 1rem; font-weight: 700; margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hours-grid { display: flex; flex-direction: column; gap: 0; }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.875rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--muted); font-weight: 500; }
+    .hours-time { font-weight: 600; text-align: right; max-width: 170px; line-height: 1.4; }
+    .contact-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--border); }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(79,110,247,0.1); border: 1px solid rgba(79,110,247,0.2);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+    .contact-value { font-size: 0.9rem; font-weight: 500; line-height: 1.5; }
+    .contact-value a { transition: color 0.2s; }
+    .contact-value a:hover { color: var(--accent); }
+    /* What to expect */
+    .expect-list { display: flex; flex-direction: column; gap: 14px; }
+    .expect-item { display: flex; gap: 12px; align-items: flex-start; font-size: 0.875rem; line-height: 1.55; }
+    .expect-num {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--grad); display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 800; color: #fff; flex-shrink: 0; margin-top: 1px;
+    }
+    /* Form validation */
+    .form-input.error, .form-select.error, .form-textarea.error { border-color: #f87171; }
+    .field-error { font-size: 0.78rem; color: #f87171; margin-top: 5px; display: none; }
+    .field-error.show { display: block; }
+    /* Submit button loading state */
+    .form-submit {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-spinner {
+      width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff; border-radius: 50%;
+      animation: spin 0.6s linear infinite; display: none; flex-shrink: 0;
+    }
+    .form-submit.loading .btn-spinner { display: block; }
+    .form-submit.loading { opacity: 0.8; cursor: not-allowed; }
+    .faq-centered-sm { max-width: 720px; margin: 0 auto; }
+    /* Success state */
+    .form-success {
+      display: none; text-align: center; padding: 40px 20px;
+    }
+    .form-success.show { display: block; }
+    .form-success-icon { margin: 0 auto 16px; width: 56px; height: 56px; }
+    .form-success h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+    .form-success p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="site-logo">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+        <span class="logo-text">Isaac's Digital</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta">Book Free Call</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">&#x2715;</button>
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="services.html" onclick="closeMobile()">Services</a>
+    <a href="how-it-works.html" onclick="closeMobile()">How It Works</a>
+    <a href="about.html" onclick="closeMobile()">About</a>
+    <a href="contact.html" class="active" onclick="closeMobile()">Contact</a>
+    <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta" onclick="closeMobile()">Book Free Call</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="label fade-in">Contact</div>
+      <h1 class="fade-in">Let's Talk About<br/><span class="highlight">Growing Your Business</span></h1>
+      <p class="fade-in">Fill out the form below or send me a direct email. I respond quickly during business hours and I'm always happy to answer questions with no strings attached.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT LAYOUT -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- FORM -->
+        <div class="form-card fade-in">
+          <h2>Book a Free Strategy Call</h2>
+          <p class="subtitle">Tell me a little about your business and what you're looking for. I'll follow up to schedule your free 15-minute strategy call.</p>
+
+          <div id="contactFormWrapper">
+            <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="firstName">First Name *</label>
+                  <input class="form-input" type="text" id="firstName" name="firstName" placeholder="Jane" required />
+                  <span class="field-error" id="firstNameError"></span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="lastName">Last Name *</label>
+                  <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Smith" required />
+                  <span class="field-error" id="lastNameError"></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address *</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="jane@yourbusiness.com" required />
+                <span class="field-error" id="emailError"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number (optional)</label>
+                <input class="form-input" type="tel" id="phone" name="phone" placeholder="(555) 555-0100" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="business">Business Name *</label>
+                <input class="form-input" type="text" id="business" name="business" placeholder="Your Business Name" required />
+                <span class="field-error" id="businessError"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="interest">What are you interested in? *</label>
+                <select class="form-select" id="interest" name="interest" required>
+                  <option value="" disabled selected>Select a service...</option>
+                  <option value="website">Website Design</option>
+                  <option value="ads">Targeted Ad Management</option>
+                  <option value="both">Both: Website + Ads</option>
+                  <option value="unsure">Not sure yet, I want advice</option>
+                </select>
+                <span class="field-error" id="interestError"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="message">Tell me about your business and goals</label>
+                <textarea class="form-textarea" id="message" name="message" placeholder="What does your business do? What's your biggest challenge online right now? What does success look like for you?"></textarea>
+              </div>
+              <button type="submit" class="form-submit">
+                <span class="btn-spinner" aria-hidden="true"></span>
+                <span class="btn-label">Send My Request &rarr;</span>
+              </button>
+              <p class="form-note">I'll respond within a few hours during business hours to schedule your free 15-minute call. No commitment required.</p>
+            </form>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">
+              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                <circle cx="28" cy="28" r="28" fill="rgba(74,222,128,0.12)"/>
+                <circle cx="28" cy="28" r="20" fill="rgba(74,222,128,0.18)"/>
+                <polyline points="18 28 25 35 38 21" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Message Sent!</h3>
+            <p>Thanks for reaching out. I'll get back to you within a few hours during business hours to schedule your free strategy call.</p>
+            <p style="margin-top:12px;">In the meantime, feel free to email me directly at <a href="mailto:isaac@isaacsdigital.com" style="color:var(--accent);">isaac@isaacsdigital.com</a></p>
+          </div>
+        </div>
+
+        <!-- INFO STACK -->
+        <div class="info-stack">
+
+          <!-- What to expect -->
+          <div class="info-card fade-in">
+            <div class="info-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              What Happens Next
+            </div>
+            <div class="expect-list">
+              <div class="expect-item">
+                <div class="expect-num">1</div>
+                <div>I receive your message and review your business details &mdash; usually within a few hours.</div>
+              </div>
+              <div class="expect-item">
+                <div class="expect-num">2</div>
+                <div>I reach out to schedule your free 15-minute strategy call at a time that works for you.</div>
+              </div>
+              <div class="expect-item">
+                <div class="expect-num">3</div>
+                <div>We have an honest conversation about your business and what I'd recommend &mdash; no pressure.</div>
+              </div>
+              <div class="expect-item">
+                <div class="expect-num">4</div>
+                <div>If it's a good fit, I send over a custom plan and transparent pricing. You decide if you want to move forward.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Direct contact -->
+          <div class="info-card fade-in">
+            <div class="info-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="12" height="8" rx="2"/><path d="M6 14l-4 4V8l4 4"/><path d="M18 14l4 4V8l-4 4"/></svg>
+              Direct Contact
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="12" height="8" rx="2"/><path d="M6 14l-4 4V8l4 4"/><path d="M18 14l4 4V8l-4 4"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">Email</div>
+                <div class="contact-value"><a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">Website</div>
+                <div class="contact-value"><a href="https://isaacsdigital.com">isaacsdigital.com</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div>
+                <div class="contact-label">Book Directly</div>
+                <div class="contact-value"><a href="https://calendly.com/isaacsdigitalservices/new-meeting">Schedule via Calendly &rarr;</a></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Business hours -->
+          <div class="info-card fade-in">
+            <div class="info-card-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Business Hours
+            </div>
+            <div class="hours-grid">
+              <div class="hours-row">
+                <span class="hours-day">Monday</span>
+                <span class="hours-time">4:00 PM &ndash; 9:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Tuesday</span>
+                <span class="hours-time">8:00 AM &ndash; 3:00 PM<br/>6:00 PM &ndash; 9:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Wednesday</span>
+                <span class="hours-time">4:00 PM &ndash; 9:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Thursday</span>
+                <span class="hours-time">8:00 AM &ndash; 3:00 PM<br/>6:00 PM &ndash; 9:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Friday</span>
+                <span class="hours-time">2:00 PM &ndash; 9:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Saturday</span>
+                <span class="hours-time">9:00 AM &ndash; 9:00 PM</span>
+              </div>
+              <div class="hours-row">
+                <span class="hours-day">Sunday</span>
+                <span class="hours-time">9:00 AM &ndash; 9:00 PM</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <div class="section-label">Before You Reach Out</div>
+        <h2 class="section-title">Quick Answers</h2>
+      </div>
+      <div class="faq-list faq-centered-sm">
+        <div class="faq-item fade-in">
+          <div class="faq-q">Is the strategy call really free? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Yes, 100% free. The 15-minute strategy call costs you nothing and commits you to nothing. It's genuinely just a conversation to understand your business and figure out if and how I can help.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">How fast will you respond? <span class="faq-icon">+</span></div>
+          <div class="faq-a">I typically respond within a few hours during business hours. If you reach out outside of business hours, I'll get back to you first thing the next business day. I take response time seriously.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">I don't have a big budget. Should I still reach out? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Yes. I work with businesses of different sizes and budgets. I'll be honest with you about what's realistic for your budget and whether it makes sense to move forward. The strategy call is the best way to find out.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">I already have a website. Can you help with just ads? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Absolutely. You can hire me for ad management only, website only, or both. If you have a website I'll take a look at it during our call and give you honest feedback on whether it's set up to convert the traffic the ads will drive.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">Do you work with businesses in different areas? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Yes. I work with local businesses across the country. Digital services don't require us to be in the same city &mdash; everything can be done remotely, and I'm experienced helping local businesses in a wide range of markets.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="site-logo">
+            <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+            <span class="logo-text">Isaac's Digital</span>
+          </a>
+          <p class="footer-tagline">Helping local businesses stop the guesswork and start growing online.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <div class="footer-col-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-col-links">
+            <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>
+            <a href="https://isaacsdigital.com" style="color:var(--muted);">isaacsdigital.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2025 Isaac's Digital Services. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    function clearErrors() {
+      document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(f => f.classList.remove('error'));
+      document.querySelectorAll('.field-error').forEach(el => { el.textContent = ''; el.classList.remove('show'); });
+    }
+
+    function showFieldError(fieldId, msg) {
+      const field = document.getElementById(fieldId);
+      const errEl = document.getElementById(fieldId + 'Error');
+      if (field) field.classList.add('error');
+      if (errEl) { errEl.textContent = msg; errEl.classList.add('show'); }
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      clearErrors();
+
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName  = document.getElementById('lastName').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const business  = document.getElementById('business').value.trim();
+      const interest  = document.getElementById('interest').value;
+
+      let hasError = false;
+      if (!firstName) { showFieldError('firstName', 'First name is required.'); hasError = true; }
+      if (!lastName)  { showFieldError('lastName',  'Last name is required.');  hasError = true; }
+      if (!email) {
+        showFieldError('email', 'Email address is required.'); hasError = true;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showFieldError('email', 'Please enter a valid email address.'); hasError = true;
+      }
+      if (!business)  { showFieldError('business', 'Business name is required.'); hasError = true; }
+      if (!interest)  { showFieldError('interest', 'Please select a service.');    hasError = true; }
+
+      if (hasError) return;
+
+      const submitBtn = document.querySelector('.form-submit');
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+
+      const subject = encodeURIComponent(`Strategy Call Request from ${firstName} ${lastName} - ${business}`);
+      const body = encodeURIComponent(
+        `New strategy call request:\n\n` +
+        `Name: ${firstName} ${lastName}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${document.getElementById('phone').value || 'Not provided'}\n` +
+        `Business: ${business}\n` +
+        `Interested in: ${interest}\n\n` +
+        `Message:\n${document.getElementById('message').value || 'No additional message.'}`
+      );
+
+      setTimeout(() => {
+        window.location.href = `mailto:isaac@isaacsdigital.com?subject=${subject}&body=${body}`;
+        document.getElementById('contactFormWrapper').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('show');
+      }, 400);
+    }
+  </script>
+</body>
+</html>

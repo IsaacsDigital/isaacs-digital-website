@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works | Isaac's Digital Services</title>
+  <meta name="description" content="A simple 4-step process: free strategy call, custom plan, launch, and ongoing optimization. No jargon, no surprises. Just a clear path to growing your business online." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Step blocks */
+    .step-block {
+      display: grid; grid-template-columns: 120px 1fr; gap: 40px;
+      align-items: start; padding: 56px 0; border-bottom: 1px solid var(--border);
+    }
+    .step-block:last-child { border-bottom: none; }
+    .step-num-big {
+      font-size: 6rem; font-weight: 900; letter-spacing: -0.05em;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1; opacity: 0.35; text-align: center; padding-top: 4px;
+    }
+    .step-content h3 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .step-content > p { font-size: 1rem; color: var(--muted); line-height: 1.7; max-width: 600px; margin-bottom: 28px; }
+    .step-note { font-size: 0.92rem; color: var(--muted); line-height: 1.7; max-width: 600px; margin-bottom: 0; }
+    .timeline-card-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .step-cta { margin-top: 28px; }
+    .faq-centered { max-width: 760px; margin: 0 auto; }
+    .step-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 28px; }
+    .step-detail-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 20px;
+    }
+    .step-detail-card h4 { font-size: 0.875rem; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .step-detail-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+    .step-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(79,110,247,0.1); border: 1px solid rgba(79,110,247,0.25);
+      color: #a5b4fc; font-size: 0.72rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.07em;
+      margin-bottom: 14px;
+    }
+    /* Timeline connector */
+    .steps-wrapper { position: relative; }
+    /* Expectations section */
+    .timeline-row { display: grid; grid-template-columns: 100px 1fr; gap: 24px; align-items: start; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .timeline-row:last-child { border-bottom: none; }
+    .timeline-time { font-size: 0.8rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+    .timeline-event h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .timeline-event p { font-size: 0.875rem; color: var(--muted); line-height: 1.55; }
+    .expectations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 700px) {
+      .step-block { grid-template-columns: 1fr; gap: 16px; }
+      .step-num-big { font-size: 3.5rem; text-align: left; }
+      .expectations-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="index.html" class="site-logo">
+        <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+        <span class="logo-text">Isaac's Digital</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html" class="active">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta">Book Free Call</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">&#x2715;</button>
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="services.html" onclick="closeMobile()">Services</a>
+    <a href="how-it-works.html" class="active" onclick="closeMobile()">How It Works</a>
+    <a href="about.html" onclick="closeMobile()">About</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+    <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="nav-cta" onclick="closeMobile()">Book Free Call</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="label fade-in">How It Works</div>
+      <h1 class="fade-in">Simple Process.<br/><span class="highlight">Real Results.</span></h1>
+      <p class="fade-in">No long contracts, no confusing jargon, no surprises. Just a clear 4-step path from where you are to where you want to be.</p>
+      <div class="hero-actions fade-in">
+        <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary">Start with a Free Call</a>
+        <a href="services.html" class="btn-secondary">See Services First &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="section">
+    <div class="container">
+      <div class="steps-wrapper">
+
+        <!-- Step 1 -->
+        <div class="step-block fade-in">
+          <div class="step-num-big">01</div>
+          <div class="step-content">
+            <div class="step-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11 19.79 19.79 0 01.1 2.38 2 2 0 012.07.18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Free &amp; No Commitment
+            </div>
+            <h3>Free Strategy Call</h3>
+            <p>
+              We start with a free 15-minute call where I learn about your business, your goals, and what's currently holding you back online. This isn't a sales pitch. It's a real conversation. I'll ask questions, listen carefully, and give you honest thoughts about what I think would actually help your business grow.
+            </p>
+            <p class="step-note">
+              If it turns out my services aren't the right fit for you, I'll tell you that too. I'd rather build trust than push a service that won't deliver real value.
+            </p>
+            <div class="step-details">
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  Takes 15 Minutes
+                </h4>
+                <p>Short, focused, and respectful of your time. We cover the essentials and figure out the best next step.</p>
+              </div>
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                  What We'll Cover
+                </h4>
+                <p>Your business and target customers, your current online situation, and your main goals for growth.</p>
+              </div>
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+                  No Pressure
+                </h4>
+                <p>Zero obligation to purchase. I won't follow up repeatedly &mdash; if you're interested, you'll know by the end of the call.</p>
+              </div>
+            </div>
+            <div class="step-cta">
+              <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary">Book Your Free Call &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-block fade-in">
+          <div class="step-num-big">02</div>
+          <div class="step-content">
+            <div class="step-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Custom Plan
+            </div>
+            <h3>Custom Plan &amp; Transparent Pricing</h3>
+            <p>
+              After our call, I put together a tailored plan specific to your business, not a generic package. This includes exactly what I'll build or manage, the strategy I'll use, and a clear, itemized price with absolutely no hidden fees. I'll walk you through everything so you understand what you're getting before you agree to anything.
+            </p>
+            <div class="step-details">
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                  Clear Proposal
+                </h4>
+                <p>A written document outlining exactly what's included, the timeline, and the price. No guessing.</p>
+              </div>
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                  Built for You
+                </h4>
+                <p>Your plan is based on your business goals, audience, and budget &mdash; not a template copied from another client.</p>
+              </div>
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                  Honest Pricing
+                </h4>
+                <p>The number you see is the number you pay. No surprise invoices, no scope creep without discussion.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-block fade-in">
+          <div class="step-num-big">03</div>
+          <div class="step-content">
+            <div class="step-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Launch
+            </div>
+            <h3>Launch &amp; Activate</h3>
+            <p>
+              Once you approve the plan, I get to work. I handle every technical detail: designing and building your website, setting up your ad accounts, creating the ad creative, and launching the campaigns. You stay in the loop with regular updates, but you don't have to lift a finger on the technical side.
+            </p>
+            <p class="step-note">
+              For websites, you'll review the site before it goes live and can request changes. Nothing launches until you're happy with it. Ad campaigns go live once everything is set up correctly and we've agreed on the budget and targeting.
+            </p>
+            <div class="step-details">
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                  Website Launch
+                </h4>
+                <p>Typically 2&ndash;4 weeks from kickoff to going live, including your review and approval.</p>
+              </div>
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                  Ads Go Live
+                </h4>
+                <p>Ad campaigns are typically ready to launch within 5&ndash;7 business days of kick-off.</p>
+              </div>
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                  I Handle Everything
+                </h4>
+                <p>Domain setup, hosting, ad accounts, tracking pixels, conversion setup &mdash; all handled by me.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-block fade-in">
+          <div class="step-num-big">04</div>
+          <div class="step-content">
+            <div class="step-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              Ongoing
+            </div>
+            <h3>Grow &amp; Optimize</h3>
+            <p>
+              This is where the real work happens. I continuously monitor your website performance and ad campaigns, run tests, analyze data, and make improvements. Every week I review what's working and what isn't, cutting wasted spend, testing new ad angles, and refining the strategy as your business grows.
+            </p>
+            <p class="step-note">
+              You receive regular reports in plain English. No confusing dashboards, no jargon. Just clear information about what's happening, what's improving, and what we're doing next.
+            </p>
+            <div class="step-details">
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                  Weekly Optimization
+                </h4>
+                <p>Ads are reviewed and adjusted weekly based on real performance data to maximize your results.</p>
+              </div>
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="10" width="12" height="8" rx="2"/><path d="M6 14l-4 4V8l4 4"/><path d="M18 14l4 4V8l-4 4"/></svg>
+                  Regular Reports
+                </h4>
+                <p>Clear, easy-to-read reports showing leads, clicks, spend, and results &mdash; sent to you on a regular schedule.</p>
+              </div>
+              <div class="step-detail-card">
+                <h4>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                  Ongoing Support
+                </h4>
+                <p>You can reach me directly with questions, updates, or new ideas. Fast responses, always.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT (TIMELINE) -->
+  <section class="section alt">
+    <div class="container">
+      <div class="section-header fade-in">
+        <div class="section-label">Timeline</div>
+        <h2 class="section-title">What to Expect &amp; When</h2>
+        <p class="section-sub">A realistic breakdown of what happens from first contact to full ongoing management.</p>
+      </div>
+      <div class="expectations-grid">
+        <div class="card fade-in">
+          <div class="timeline-card-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Website Project
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Day 1</div>
+            <div class="timeline-event"><h4>Free Strategy Call</h4><p>15-minute discovery conversation.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Day 2&ndash;3</div>
+            <div class="timeline-event"><h4>Proposal Sent</h4><p>You receive a custom plan and pricing for review.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Week 1</div>
+            <div class="timeline-event"><h4>Kickoff &amp; Gather Content</h4><p>I collect your logo, photos, and any existing content.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Week 2&ndash;3</div>
+            <div class="timeline-event"><h4>Design &amp; Build</h4><p>I build your site and share previews for feedback.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Week 4</div>
+            <div class="timeline-event"><h4>Review &amp; Revisions</h4><p>You review, I make changes, we finalize.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Week 4&ndash;5</div>
+            <div class="timeline-event"><h4>Launch!</h4><p>Your site goes live.</p></div>
+          </div>
+        </div>
+        <div class="card fade-in">
+          <div class="timeline-card-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Ad Campaign
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Day 1</div>
+            <div class="timeline-event"><h4>Free Strategy Call</h4><p>Discuss your goals, audience, and ad budget.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Day 2&ndash;3</div>
+            <div class="timeline-event"><h4>Proposal &amp; Strategy</h4><p>Full campaign strategy with targeting and creative plan.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Day 4&ndash;7</div>
+            <div class="timeline-event"><h4>Setup &amp; Creative</h4><p>Ad account setup, creative built, targeting configured.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Day 7&ndash;10</div>
+            <div class="timeline-event"><h4>Campaigns Go Live</h4><p>Ads start running. Data collection begins.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Week 2&ndash;4</div>
+            <div class="timeline-event"><h4>Learning &amp; Optimization</h4><p>Weekly analysis, A/B testing, and refinement.</p></div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Month 2+</div>
+            <div class="timeline-event"><h4>Scale What Works</h4><p>Double down on winning campaigns, expand reach.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Process Questions Answered</h2>
+      </div>
+      <div class="faq-list faq-centered">
+        <div class="faq-item fade-in">
+          <div class="faq-q">Do I need to sign a long-term contract? <span class="faq-icon">+</span></div>
+          <div class="faq-a">No long-term contracts. Ad management is month-to-month, and website projects are one-time engagements with clear deliverables. I earn your continued business by delivering results, not by locking you in.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">How involved do I need to be? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Minimal. I need your input at the start (for the strategy call and content gathering) and your approval before anything launches. After that, I handle everything and keep you informed through regular reports. You run your business &mdash; I handle the digital side.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">What if I'm not happy with the results? <span class="faq-icon">+</span></div>
+          <div class="faq-a">If results aren't meeting expectations, we have an honest conversation about it. I'll review what's happening, explain my analysis, and adjust the strategy. I'm invested in your success &mdash; unhappy clients aren't something I'm okay with. For specific concerns about refunds, see our Refund Policy.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">Can I pause or cancel ad management? <span class="faq-icon">+</span></div>
+          <div class="faq-a">Yes. Since it's month-to-month, you can pause or cancel with reasonable notice. I'll make sure you have full access to your own ad accounts at all times so you're never held hostage to my services.</div>
+        </div>
+        <div class="faq-item fade-in">
+          <div class="faq-q">Who owns the website after it's built? <span class="faq-icon">+</span></div>
+          <div class="faq-a">You do, 100%. Your website, your domain, your hosting account. Everything built for you belongs to you. If you ever want to move on, you take everything with you, no strings attached.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-band">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="cta-text fade-in">
+          <h2>Ready to Take the<br/>First Step?</h2>
+          <p>Step 1 is free. Book your 15-minute strategy call and let's talk about what's holding your business back online and how to fix it.</p>
+        </div>
+        <div class="cta-actions fade-in">
+          <a href="https://calendly.com/isaacsdigitalservices/new-meeting" class="btn-primary">Book My Free Call</a>
+          <a href="services.html" class="btn-secondary">View Services &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="site-logo">
+            <svg width="22" height="26" viewBox="0 0 22 26" fill="none" aria-hidden="true"><rect x="0" y="17" width="5.5" height="9" rx="1.5" fill="#4f6ef7"/><rect x="7.5" y="11" width="5.5" height="15" rx="1.5" fill="#6060f5"/><rect x="15" y="5" width="5.5" height="21" rx="1.5" fill="#7c3aed"/><circle cx="17.75" cy="2.5" r="2.5" fill="#7c3aed"/></svg>
+            <span class="logo-text">Isaac's Digital</span>
+          </a>
+          <p class="footer-tagline">Helping local businesses stop the guesswork and start growing online.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Pages</div>
+          <div class="footer-col-links">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-col-links">
+            <a href="mailto:isaac@isaacsdigital.com">isaac@isaacsdigital.com</a>
+            <a href="https://isaacsdigital.com" style="color:var(--muted);">isaacsdigital.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2025 Isaac's Digital Services. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="refund-policy.html">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
