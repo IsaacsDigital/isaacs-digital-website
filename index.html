@@ -242,6 +242,18 @@
     </div>
   </section>
 
+  <!-- REVIEWS -->
+  <section class="section alt" id="reviews-section" style="display:none;">
+    <div class="container">
+      <div class="section-header center fade-in">
+        <div class="section-label">Client Reviews</div>
+        <h2 class="section-title">What Clients Are Saying</h2>
+        <p class="section-sub">Real feedback from local business owners I've worked with.</p>
+      </div>
+      <div class="grid-auto" id="reviews-grid"></div>
+    </div>
+  </section>
+
   <!-- CTA BAND -->
   <div class="cta-band">
     <div class="container">
@@ -297,6 +309,60 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const SUPABASE_URL = 'https://zzdhxxclasgtshfwwxpe.supabase.co';
+      const SUPABASE_ANON_KEY = 'sb_publishable_c31btJJiiDzCnKH7k_byaQ_KJMZ0u_k';
+
+      function renderStars(rating) {
+        const n = Math.round(Math.max(1, Math.min(5, rating || 5)));
+        return '★'.repeat(n) + '☆'.repeat(5 - n);
+      }
+
+      function getInitials(name) {
+        return (name || '?').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+      }
+
+      function renderCard(review) {
+        const card = document.createElement('div');
+        card.className = 'testimonial-card fade-in';
+        card.innerHTML =
+          '<div class="stars">' + renderStars(review.rating) + '</div>' +
+          '<p class="testimonial-text">\u201C' + escapeHtml(review.review_text || review.text || review.body || '') + '\u201D</p>' +
+          '<div class="testimonial-author">' +
+            '<div class="author-avatar">' + escapeHtml(getInitials(review.client_name || review.name || '?')) + '</div>' +
+            '<div><div class="author-name">' + escapeHtml(review.client_name || review.name || 'Client') + '</div></div>' +
+          '</div>';
+        return card;
+      }
+
+      function escapeHtml(str) {
+        return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+      fetch(SUPABASE_URL + '/rest/v1/reviews?approved=eq.true&select=*&order=created_at.desc', {
+        headers: {
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+        }
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (!Array.isArray(data) || data.length === 0) return;
+        const section = document.getElementById('reviews-section');
+        const grid = document.getElementById('reviews-grid');
+        data.forEach(function(review) { grid.appendChild(renderCard(review)); });
+        section.style.display = '';
+        var revObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        grid.querySelectorAll('.fade-in').forEach(function(el) { revObserver.observe(el); });
+        revObserver.observe(section.querySelector('.section-header'));
+      })
+      .catch(function() { /* silently skip if fetch fails */ });
+    }());
+  </script>
 
   <script>
     const hamburgerBtn = document.getElementById('hamburgerBtn');
