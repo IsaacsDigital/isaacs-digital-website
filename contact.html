@@ -467,22 +467,34 @@
       submitBtn.classList.add('loading');
       submitBtn.disabled = true;
 
-      const subject = encodeURIComponent(`Strategy Call Request from ${firstName} ${lastName} - ${business}`);
-      const body = encodeURIComponent(
-        `New strategy call request:\n\n` +
-        `Name: ${firstName} ${lastName}\n` +
-        `Email: ${email}\n` +
-        `Phone: ${document.getElementById('phone').value || 'Not provided'}\n` +
-        `Business: ${business}\n` +
-        `Interested in: ${interest}\n\n` +
-        `Message:\n${document.getElementById('message').value || 'No additional message.'}`
-      );
+      const formData = {
+        firstName,
+        lastName,
+        email,
+        phone: document.getElementById('phone').value || 'Not provided',
+        business,
+        interest,
+        message: document.getElementById('message').value || 'No additional message.'
+      };
 
-      setTimeout(() => {
-        window.location.href = `mailto:isaac@isaacsdigital.com?subject=${subject}&body=${body}`;
-        document.getElementById('contactFormWrapper').style.display = 'none';
-        document.getElementById('formSuccess').classList.add('show');
-      }, 400);
+      fetch('https://formspree.io/f/xvzdpapk', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      .then(res => {
+        if (res.ok) {
+          document.getElementById('contactFormWrapper').style.display = 'none';
+          document.getElementById('formSuccess').classList.add('show');
+        } else {
+          return res.json().then(data => { throw new Error(data.error || 'Submission failed.'); });
+        }
+      })
+      .catch(() => {
+        submitBtn.classList.remove('loading');
+        submitBtn.disabled = false;
+        alert('Something went wrong. Please try again or email isaac@isaacsdigital.com directly.');
+      });
     }
   </script>
 </body>
