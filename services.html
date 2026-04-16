@@ -70,12 +70,13 @@
     .pricing-card-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); }
     .pricing-card-title { font-size: 1.2rem; font-weight: 800; }
     .pricing-amount { font-size: 2.4rem; font-weight: 900; letter-spacing: -0.03em; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.1; }
+    .pricing-amount--secondary { font-size: 1.6rem; }
     .pricing-amount-sub { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
     .pricing-note { font-size: 0.875rem; color: var(--muted); line-height: 1.65; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px 20px; }
     .pricing-note strong { color: var(--text); }
     .pricing-card--featured,
     .pricing-card--featured:hover { border-color: rgba(79,110,247,0.55); box-shadow: 0 0 28px rgba(79,110,247,0.12); }
-    .pricing-card-badge { display: inline-flex; align-items: center; background: var(--grad); color: #fff; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 100px; width: fit-content; margin-bottom: 4px; }
+    .pricing-card-badge { display: inline-flex; align-items: center; background: var(--grad); color: #fff; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 100px; margin-bottom: 4px; }
 
     /* ── Browser Mockup ── */
     .browser-mockup {
@@ -584,7 +585,7 @@
           <div class="pricing-card-title">Complete Growth Package</div>
           <div>
             <div class="pricing-amount">$4,500<span style="font-size:1.2rem;"> upfront</span></div>
-            <div class="pricing-amount" style="font-size:1.6rem; margin-top:4px;">+ $1,000<span style="font-size:1.1rem;">/mo</span></div>
+            <div class="pricing-amount pricing-amount--secondary" style="margin-top:4px;">+ $1,000<span style="font-size:1.1rem;">/mo</span></div>
             <div class="pricing-amount-sub">One-time setup + monthly management</div>
           </div>
           <ul class="feature-list pricing-list">
