@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src https://formspree.io https://zzdhxxclasgtshfwwxpe.supabase.co; base-uri 'self'; form-action 'self' https://formspree.io;" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Contact | Isaac's Digital Services</title>
   <meta name="description" content="Book your free 15-minute strategy call with Isaac. No commitment required. View business hours and contact information for Isaac's Digital Services." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -164,30 +166,35 @@
 
           <div id="contactFormWrapper">
             <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+              <!-- Honeypot: hidden from real users, bots will fill it -->
+              <div style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+                <label for="_trap">Leave this empty</label>
+                <input type="text" id="_trap" name="_trap" tabindex="-1" autocomplete="off" />
+              </div>
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="firstName">First Name *</label>
-                  <input class="form-input" type="text" id="firstName" name="firstName" placeholder="Jane" required />
+                  <input class="form-input" type="text" id="firstName" name="firstName" placeholder="Jane" required maxlength="100" />
                   <span class="field-error" id="firstNameError"></span>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="lastName">Last Name *</label>
-                  <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Smith" required />
+                  <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Smith" required maxlength="100" />
                   <span class="field-error" id="lastNameError"></span>
                 </div>
               </div>
               <div class="form-group">
                 <label class="form-label" for="email">Email Address *</label>
-                <input class="form-input" type="email" id="email" name="email" placeholder="jane@yourbusiness.com" required />
+                <input class="form-input" type="email" id="email" name="email" placeholder="jane@yourbusiness.com" required maxlength="254" />
                 <span class="field-error" id="emailError"></span>
               </div>
               <div class="form-group">
                 <label class="form-label" for="phone">Phone Number (optional)</label>
-                <input class="form-input" type="tel" id="phone" name="phone" placeholder="(555) 555-0100" />
+                <input class="form-input" type="tel" id="phone" name="phone" placeholder="(555) 555-0100" maxlength="30" />
               </div>
               <div class="form-group">
                 <label class="form-label" for="business">Business Name *</label>
-                <input class="form-input" type="text" id="business" name="business" placeholder="Your Business Name" required />
+                <input class="form-input" type="text" id="business" name="business" placeholder="Your Business Name" required maxlength="200" />
                 <span class="field-error" id="businessError"></span>
               </div>
               <div class="form-group">
@@ -203,7 +210,7 @@
               </div>
               <div class="form-group">
                 <label class="form-label" for="message">Tell me about your business and goals</label>
-                <textarea class="form-textarea" id="message" name="message" placeholder="What does your business do? What's your biggest challenge online right now? What does success look like for you?"></textarea>
+                <textarea class="form-textarea" id="message" name="message" placeholder="What does your business do? What's your biggest challenge online right now? What does success look like for you?" maxlength="2000"></textarea>
               </div>
               <button type="submit" class="form-submit">
                 <span class="btn-spinner" aria-hidden="true"></span>
@@ -442,6 +449,7 @@
 
     function handleSubmit(e) {
       e.preventDefault();
+      if (document.getElementById('_trap').value) return;
       clearErrors();
 
       const firstName = document.getElementById('firstName').value.trim();

@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src https://formspree.io https://zzdhxxclasgtshfwwxpe.supabase.co; base-uri 'self'; form-action 'self' https://formspree.io;" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Isaac's Digital Services | Websites &amp; Ads for Local Businesses</title>
   <meta name="description" content="Isaac's Digital Services builds high-converting websites and runs targeted ad campaigns for local businesses. Book a free strategy call today." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -327,18 +329,34 @@
       function renderCard(review) {
         const card = document.createElement('div');
         card.className = 'testimonial-card fade-in';
-        card.innerHTML =
-          '<div class="stars">' + renderStars(review.rating) + '</div>' +
-          '<p class="testimonial-text">\u201C' + escapeHtml(review.review_text || review.text || review.body || '') + '\u201D</p>' +
-          '<div class="testimonial-author">' +
-            '<div class="author-avatar">' + escapeHtml(getInitials(review.client_name || review.name || '?')) + '</div>' +
-            '<div><div class="author-name">' + escapeHtml(review.client_name || review.name || 'Client') + '</div></div>' +
-          '</div>';
-        return card;
-      }
 
-      function escapeHtml(str) {
-        return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        const stars = document.createElement('div');
+        stars.className = 'stars';
+        stars.textContent = renderStars(review.rating);
+
+        const text = document.createElement('p');
+        text.className = 'testimonial-text';
+        text.textContent = '\u201C' + (review.review_text || review.text || review.body || '') + '\u201D';
+
+        const author = document.createElement('div');
+        author.className = 'testimonial-author';
+
+        const avatar = document.createElement('div');
+        avatar.className = 'author-avatar';
+        avatar.textContent = getInitials(review.client_name || review.name || '?');
+
+        const nameWrap = document.createElement('div');
+        const nameEl = document.createElement('div');
+        nameEl.className = 'author-name';
+        nameEl.textContent = review.client_name || review.name || 'Client';
+        nameWrap.appendChild(nameEl);
+
+        author.appendChild(avatar);
+        author.appendChild(nameWrap);
+        card.appendChild(stars);
+        card.appendChild(text);
+        card.appendChild(author);
+        return card;
       }
 
       fetch(SUPABASE_URL + '/rest/v1/reviews?approved=eq.true&select=*&order=created_at.desc', {
