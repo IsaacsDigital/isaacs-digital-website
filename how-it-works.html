@@ -437,25 +437,7 @@
     </div>
   </footer>
 
-  <script>
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeMenu = document.getElementById('closeMenu');
-    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
-    closeMenu.addEventListener('click', () => mobileMenu.classList.remove('open'));
-    function closeMobile() { mobileMenu.classList.remove('open'); }
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-      });
-    });
-  </script>
+  <script src="/js/main.js"></script>
+  <script src="/js/faq.js"></script>
 </body>
 </html>
